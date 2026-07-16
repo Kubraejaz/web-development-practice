@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nimbus Admin – Dashboard</title>
+    <meta name="description" content="Nimbus Admin Dashboard – manage your projects, team, and reports all in one place.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+    <!-- ===== TOP NAVBAR ===== -->
+    <header class="db-navbar" id="db-navbar">
+        <div class="db-navbar__brand">
+            <div class="db-navbar__logo">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="white" stroke-width="2.2" stroke-linejoin="round"/>
+                    <path d="M9 22V12h6v10" stroke="white" stroke-width="2.2" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <span class="db-navbar__site-name">Nimbus Admin</span>
+        </div>
+
+        <nav class="db-navbar__nav" aria-label="Primary navigation">
+            <a href="#" class="db-nav-link db-nav-link--active" id="nav-dashboard">Dashboard</a>
+            <a href="#" class="db-nav-link" id="nav-projects">Projects</a>
+            <a href="#" class="db-nav-link" id="nav-reports">Reports</a>
+        </nav>
+
+        <div class="db-navbar__right">
+            <div class="db-notif" id="db-notif-btn" role="button" aria-label="Notifications" tabindex="0">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                    <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M13.73 21a2 2 0 01-3.46 0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="db-notif__dot" aria-label="3 new notifications">3</span>
+            </div>
+            <div class="db-user-pill" id="db-user-pill" role="button" tabindex="0" aria-haspopup="true">
+                <div class="db-user-pill__avatar">AM</div>
+                <span class="db-user-pill__name">Alex Morgan</span>
+                <svg class="db-user-pill__caret" width="12" height="12" viewBox="0 0 24 24" fill="none">
+                    <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== ALERT BANNER ===== -->
+    <div class="db-alert-banner" id="db-alert-banner" role="alert">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" stroke="#d48000" stroke-width="2"/>
+            <line x1="12" y1="8" x2="12" y2="12" stroke="#d48000" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="12" cy="16" r="1" fill="#d48000"/>
+        </svg>
+        <p><strong>Heads up!</strong> Scheduled maintenance this weekend — plan accordingly.</p>
+        <button class="db-alert-banner__close" id="db-alert-close" aria-label="Close alert">&#x2715;</button>
+    </div>
+
+    <!-- ===== MAIN LAYOUT ===== -->
+    <div class="db-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="db-sidebar" id="db-sidebar" aria-label="Sidebar navigation">
+            <p class="db-sidebar__label">MENU</p>
+            <nav class="db-sidebar__nav">
+                <a href="#" class="db-sidebar__link db-sidebar__link--active" id="sidebar-dashboard">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/></svg>
+                    Dashboard
+                </a>
+                <a href="#" class="db-sidebar__link" id="sidebar-projects">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V7z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+                    Projects
+                    <span class="db-sidebar__badge">12</span>
+                </a>
+                <a href="#" class="db-sidebar__link" id="sidebar-team">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    Team
+                    <span class="db-sidebar__badge db-sidebar__badge--green">5</span>
+                </a>
+                <a href="#" class="db-sidebar__link" id="sidebar-settings">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z" stroke="currentColor" stroke-width="2"/></svg>
+                    Settings
+                </a>
+                <a href="#" class="db-sidebar__link db-sidebar__link--locked" id="sidebar-billing">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" stroke-width="2"/><path d="M7 11V7a5 5 0 0110 0v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    Billing (locked)
+                </a>
+            </nav>
+
+            <div class="db-sidebar__divider"></div>
+
+            <div class="db-storage" id="db-storage">
+                <p class="db-sidebar__label">STORAGE</p>
+                <div class="db-storage__info">
+                    <span>68 GB of 100 GB</span>
+                    <span>68%</span>
+                </div>
+                <div class="db-storage__bar" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100">
+                    <div class="db-storage__fill" style="width: 68%;"></div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="db-main" id="db-main">
+
+            <!-- Welcome Header -->
+            <div class="db-welcome" id="db-welcome">
+                <div class="db-welcome__left">
+                    <span class="db-welcome__badge">NEW</span>
+                    <h1 class="db-welcome__title">Welcome back, Alex &#x1F44B;</h1>
+                    <p class="db-welcome__subtitle">Here's what's happening with your projects today.</p>
+                </div>
+                <div class="db-welcome__actions">
+                    <button class="db-btn db-btn--outline" id="btn-new-project">New Project</button>
+                    <button class="db-btn db-btn--primary" id="btn-invite-team">Invite Team</button>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="db-stats" id="db-stats">
+                <div class="db-stat-card" id="stat-active-users">
+                    <p class="db-stat-card__label">Active Users</p>
+                    <p class="db-stat-card__value">2,481</p>
+                    <div class="db-stat-card__bar">
+                        <div class="db-stat-card__fill db-stat-card__fill--blue" style="width: 72%;"></div>
+                    </div>
+                </div>
+                <div class="db-stat-card" id="stat-revenue">
+                    <p class="db-stat-card__label">Revenue</p>
+                    <p class="db-stat-card__value">$18.2k</p>
+                    <div class="db-stat-card__bar">
+                        <div class="db-stat-card__fill db-stat-card__fill--green" style="width: 61%;"></div>
+                    </div>
+                </div>
+                <div class="db-stat-card" id="stat-open-tickets">
+                    <p class="db-stat-card__label">Open Tickets</p>
+                    <p class="db-stat-card__value">37</p>
+                    <div class="db-stat-card__bar">
+                        <div class="db-stat-card__fill db-stat-card__fill--yellow" style="width: 37%;"></div>
+                    </div>
+                </div>
+                <div class="db-stat-card db-stat-card--syncing" id="stat-syncing">
+                    <p class="db-stat-card__label">Syncing Data</p>
+                    <div class="db-stat-card__syncing">
+                        <span class="db-spinner" aria-label="Loading"></span>
+                        <span>Loading latest stats&hellip;</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="db-tabs" id="db-tabs" role="tablist">
+                <button class="db-tab db-tab--active" role="tab" aria-selected="true" id="tab-overview">Overview</button>
+                <button class="db-tab" role="tab" aria-selected="false" id="tab-analytics">Analytics</button>
+                <button class="db-tab" role="tab" aria-selected="false" id="tab-reports">Reports</button>
+                <button class="db-tab" role="tab" aria-selected="false" id="tab-archived">Archived</button>
+            </div>
+
+            <!-- Hero Banner / Carousel -->
+            <div class="db-carousel" id="db-carousel" role="region" aria-label="Dashboard highlights">
+                <button class="db-carousel__arrow db-carousel__arrow--left" id="carousel-prev" aria-label="Previous slide">&#8249;</button>
+                <div class="db-carousel__track" id="carousel-track">
+                    <div class="db-carousel__slide db-carousel__slide--active" id="carousel-slide-1">
+                        <div class="db-carousel__circle db-carousel__circle--1"></div>
+                        <div class="db-carousel__circle db-carousel__circle--2"></div>
+                        <div class="db-carousel__content">
+                            <h2>Project overview at a glance</h2>
+                            <p>Track all your active work streams, team progress, and key milestones.</p>
+                        </div>
+                    </div>
+                    <div class="db-carousel__slide db-carousel__slide--2" id="carousel-slide-2">
+                        <div class="db-carousel__circle db-carousel__circle--1"></div>
+                        <div class="db-carousel__circle db-carousel__circle--2"></div>
+                        <div class="db-carousel__content">
+                            <h2>Automate your workflows</h2>
+                            <p>Set up smart triggers and automations to save hours each week.</p>
+                        </div>
+                    </div>
+                    <div class="db-carousel__slide db-carousel__slide--3" id="carousel-slide-3">
+                        <div class="db-carousel__circle db-carousel__circle--1"></div>
+                        <div class="db-carousel__circle db-carousel__circle--2"></div>
+                        <div class="db-carousel__content">
+                            <h2>Deep analytics &amp; reporting</h2>
+                            <p>Get actionable insights from your data with beautiful built-in charts.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="db-carousel__arrow db-carousel__arrow--right" id="carousel-next" aria-label="Next slide">&#8250;</button>
+                <div class="db-carousel__dots" role="tablist" aria-label="Carousel navigation">
+                    <span class="db-carousel__dot db-carousel__dot--active" id="dot-1" role="tab" aria-label="Slide 1" tabindex="0"></span>
+                    <span class="db-carousel__dot" id="dot-2" role="tab" aria-label="Slide 2" tabindex="0"></span>
+                    <span class="db-carousel__dot" id="dot-3" role="tab" aria-label="Slide 3" tabindex="0"></span>
+                </div>
+            </div>
+
+            <!-- Recent Orders -->
+            <section class="db-card" id="section-recent-orders" aria-labelledby="recent-orders-heading">
+                <h2 class="db-card__title" id="recent-orders-heading">Recent Orders</h2>
+                <div class="db-table-wrapper">
+                    <table class="db-table" id="orders-table">
+                        <thead>
+                            <tr>
+                                <th>Order</th>
+                                <th>Customer</th>
+                                <th>Status</th>
+                                <th class="db-table__right">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#1042</td>
+                                <td>Sara Ahmed</td>
+                                <td><span class="db-badge db-badge--paid">Paid</span></td>
+                                <td class="db-table__right">$240.00</td>
+                            </tr>
+                            <tr>
+                                <td>#1041</td>
+                                <td>Ali Khan</td>
+                                <td><span class="db-badge db-badge--pending">Pending</span></td>
+                                <td class="db-table__right">$89.50</td>
+                            </tr>
+                            <tr>
+                                <td>#1040</td>
+                                <td>Omar Raza</td>
+                                <td><span class="db-badge db-badge--failed">Failed</span></td>
+                                <td class="db-table__right">$132.00</td>
+                            </tr>
+                            <tr>
+                                <td>#1039</td>
+                                <td>Nadia Iqbal</td>
+                                <td><span class="db-badge db-badge--paid">Paid</span></td>
+                                <td class="db-table__right">$310.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="db-pagination" id="orders-pagination">
+                    <button class="db-page-btn" id="orders-prev">Previous</button>
+                    <button class="db-page-btn db-page-btn--active" aria-current="page">1</button>
+                    <button class="db-page-btn" id="orders-page-2">2</button>
+                    <button class="db-page-btn" id="orders-page-3">3</button>
+                    <button class="db-page-btn" id="orders-next">Next</button>
+                </div>
+            </section>
+
+            <!-- Team Snapshots + Feedback -->
+            <div class="db-two-col" id="db-two-col">
+                <section class="db-card db-card--snapshots" id="section-team-snapshots" aria-labelledby="snapshots-heading">
+                    <h2 class="db-card__title" id="snapshots-heading">Team Snapshots</h2>
+                    <div class="db-snapshots" id="db-snapshots">
+                        <div class="db-snapshot db-snapshot--purple" id="snapshot-1">
+                            <div class="db-snapshot__circle"></div>
+                        </div>
+                        <div class="db-snapshot db-snapshot--orange" id="snapshot-2">
+                            <div class="db-snapshot__circle"></div>
+                        </div>
+                        <div class="db-snapshot db-snapshot--teal" id="snapshot-3">
+                            <div class="db-snapshot__circle"></div>
+                        </div>
+                    </div>
+                    <div class="db-team-avatars" id="db-team-avatars">
+                        <div class="db-team-avatar" style="background:#8d65d4;" title="Alice">A</div>
+                        <div class="db-team-avatar" style="background:#e6a800;" title="Ben">B</div>
+                        <div class="db-team-avatar" style="background:#198754;" title="Chen">C</div>
+                        <span class="db-team-more" id="db-team-more">+9 more</span>
+                    </div>
+                </section>
+
+                <aside class="db-feedback" id="db-feedback" aria-labelledby="feedback-heading">
+                    <p class="db-feedback__label" id="feedback-heading">FEEDBACK</p>
+                    <blockquote class="db-feedback__quote">
+                        "Nimbus cut our weekly status meeting time in half."
+                    </blockquote>
+                    <p class="db-feedback__author">&#8212; Head of Product</p>
+                </aside>
+            </div>
+
+            <!-- FAQ Section -->
+            <section class="db-card" id="section-faq" aria-labelledby="faq-heading">
+                <h2 class="db-card__title" id="faq-heading">Frequently Asked Questions</h2>
+                <div class="db-faq" id="db-faq">
+                    <div class="db-faq__item" id="faq-item-1">
+                        <button class="db-faq__question" aria-expanded="true" aria-controls="faq-answer-1" id="faq-btn-1">
+                            How do I invite my team?
+                            <span class="db-faq__icon">&#9660;</span>
+                        </button>
+                        <div class="db-faq__answer db-faq__answer--open" id="faq-answer-1">
+                            Go to Settings &#8594; Team &#8594; Invite Members, then enter their email address.
+                        </div>
+                    </div>
+                    <div class="db-faq__item" id="faq-item-2">
+                        <button class="db-faq__question" aria-expanded="false" aria-controls="faq-answer-2" id="faq-btn-2">
+                            Can I export my reports?
+                            <span class="db-faq__icon">&#9660;</span>
+                        </button>
+                        <div class="db-faq__answer" id="faq-answer-2">
+                            Yes! Navigate to Reports &#8594; Export and choose CSV or PDF format.
+                        </div>
+                    </div>
+                    <div class="db-faq__item" id="faq-item-3">
+                        <button class="db-faq__question" aria-expanded="false" aria-controls="faq-answer-3" id="faq-btn-3">
+                            How does billing work?
+                            <span class="db-faq__icon">&#9660;</span>
+                        </button>
+                        <div class="db-faq__answer" id="faq-answer-3">
+                            Billing is monthly or annual. You can upgrade, downgrade, or cancel any time from Settings &#8594; Billing.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Modal Preview Section -->
+            <section class="db-card" id="section-modal-preview" aria-labelledby="modal-preview-heading">
+                <h2 class="db-card__title" id="modal-preview-heading">Modal Preview</h2>
+                <div class="db-modal-preview" id="db-modal-preview">
+                    <div class="db-modal-overlay"></div>
+                    <div class="db-modal" id="db-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+                        <div class="db-modal__header">
+                            <h3 class="db-modal__title" id="modal-title">Delete Project?</h3>
+                            <button class="db-modal__close" id="modal-close-btn" aria-label="Close modal">&#x2715;</button>
+                        </div>
+                        <p class="db-modal__body">This action cannot be undone. All project files will be permanently removed.</p>
+                        <div class="db-modal__footer">
+                            <button class="db-modal__btn db-modal__btn--cancel" id="modal-cancel-btn">Cancel</button>
+                            <button class="db-modal__btn db-modal__btn--delete" id="modal-delete-btn">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        // Alert banner dismiss
+        document.getElementById('db-alert-close').addEventListener('click', function () {
+            const banner = document.getElementById('db-alert-banner');
+            banner.style.transition = 'opacity 0.3s, max-height 0.3s, padding 0.3s';
+            banner.style.opacity = '0';
+            banner.style.maxHeight = '0';
+            banner.style.padding = '0';
+            setTimeout(() => banner.remove(), 320);
+        });
+
+        // Tabs
+        const tabs = document.querySelectorAll('.db-tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function () {
+                tabs.forEach(t => { t.classList.remove('db-tab--active'); t.setAttribute('aria-selected', 'false'); });
+                this.classList.add('db-tab--active');
+                this.setAttribute('aria-selected', 'true');
+            });
+        });
+
+        // Carousel
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.db-carousel__slide');
+        const dots = document.querySelectorAll('.db-carousel__dot');
+
+        function goToSlide(index) {
+            slides[currentSlide].classList.remove('db-carousel__slide--active');
+            dots[currentSlide].classList.remove('db-carousel__dot--active');
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.add('db-carousel__slide--active');
+            dots[currentSlide].classList.add('db-carousel__dot--active');
+        }
+
+        document.getElementById('carousel-prev').addEventListener('click', () => goToSlide(currentSlide - 1));
+        document.getElementById('carousel-next').addEventListener('click', () => goToSlide(currentSlide + 1));
+        dots.forEach((dot, i) => dot.addEventListener('click', () => goToSlide(i)));
+        setInterval(() => goToSlide(currentSlide + 1), 4500);
+
+        // FAQ Accordion
+        document.querySelectorAll('.db-faq__question').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const expanded = this.getAttribute('aria-expanded') === 'true';
+                document.querySelectorAll('.db-faq__question').forEach(b => {
+                    b.setAttribute('aria-expanded', 'false');
+                    b.closest('.db-faq__item').querySelector('.db-faq__answer').classList.remove('db-faq__answer--open');
+                });
+                if (!expanded) {
+                    this.setAttribute('aria-expanded', 'true');
+                    this.closest('.db-faq__item').querySelector('.db-faq__answer').classList.add('db-faq__answer--open');
+                }
+            });
+        });
+
+        // Modal close animation
+        function hideModal() {
+            const modal = document.getElementById('db-modal');
+            modal.style.transform = 'scale(0.9) translateY(8px)';
+            modal.style.opacity = '0';
+            setTimeout(() => { modal.style.transform = ''; modal.style.opacity = ''; }, 600);
+        }
+        document.getElementById('modal-close-btn').addEventListener('click', hideModal);
+        document.getElementById('modal-cancel-btn').addEventListener('click', hideModal);
+
+        // Sidebar active state
+        document.querySelectorAll('.db-sidebar__link:not(.db-sidebar__link--locked)').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelectorAll('.db-sidebar__link').forEach(l => l.classList.remove('db-sidebar__link--active'));
+                this.classList.add('db-sidebar__link--active');
+            });
+        });
+
+        // Pagination active state
+        document.querySelectorAll('.db-page-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const numBtns = document.querySelectorAll('.db-page-btn:not(#orders-prev):not(#orders-next)');
+                numBtns.forEach(b => b.classList.remove('db-page-btn--active'));
+                if (!this.id || (this.id !== 'orders-prev' && this.id !== 'orders-next')) {
+                    this.classList.add('db-page-btn--active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
