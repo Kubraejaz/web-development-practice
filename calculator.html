@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Calculator – Functions Assignment</title>
+    <meta name="description" content="A JavaScript calculator demonstrating functions with addition, subtraction, multiplication, division and more.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css/calculator.css">
+</head>
+<body>
+
+<div class="page-wrapper">
+
+    <!-- ===== CALCULATOR ===== -->
+    <div class="calculator">
+        <p class="calc-title">✦ JS Calculator</p>
+
+        <!-- Display -->
+        <div class="calc-display">
+            <div id="expression"></div>
+            <div id="result">0</div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="calc-buttons">
+
+            <!-- Row 1 -->
+            <button class="btn btn-clear"     id="btn-ac"    onclick="clearAll()">AC</button>
+            <button class="btn btn-clear"     id="btn-back"  onclick="backspace()">&#9003;</button>
+            <button class="btn btn-fn"        id="btn-mod"   onclick="appendToExpr('%')">%</button>
+            <button class="btn btn-op"        id="btn-div"   onclick="appendToExpr('&#247;')">&#247;</button>
+
+            <!-- Row 2 -->
+            <button class="btn btn-num"       id="btn-7"     onclick="appendToExpr('7')">7</button>
+            <button class="btn btn-num"       id="btn-8"     onclick="appendToExpr('8')">8</button>
+            <button class="btn btn-num"       id="btn-9"     onclick="appendToExpr('9')">9</button>
+            <button class="btn btn-op"        id="btn-mul"   onclick="appendToExpr('&#215;')">&#215;</button>
+
+            <!-- Row 3 -->
+            <button class="btn btn-num"       id="btn-4"     onclick="appendToExpr('4')">4</button>
+            <button class="btn btn-num"       id="btn-5"     onclick="appendToExpr('5')">5</button>
+            <button class="btn btn-num"       id="btn-6"     onclick="appendToExpr('6')">6</button>
+            <button class="btn btn-op"        id="btn-sub"   onclick="appendToExpr('-')">&#8722;</button>
+
+            <!-- Row 4 -->
+            <button class="btn btn-num"       id="btn-1"     onclick="appendToExpr('1')">1</button>
+            <button class="btn btn-num"       id="btn-2"     onclick="appendToExpr('2')">2</button>
+            <button class="btn btn-num"       id="btn-3"     onclick="appendToExpr('3')">3</button>
+            <button class="btn btn-op"        id="btn-add"   onclick="appendToExpr('+')">+</button>
+
+            <!-- Row 5 -->
+            <button class="btn btn-num"       id="btn-0"     onclick="appendToExpr('0')">0</button>
+            <button class="btn btn-num"       id="btn-dot"   onclick="appendDecimal()">.</button>
+            <button class="btn btn-fn"        id="btn-pow"   onclick="appendToExpr('^')">x&#696;</button>
+            <button class="btn btn-eq"        id="btn-eq"    onclick="calculate()">=</button>
+
+            <!-- Row 6: Extra Functions -->
+            <button class="btn btn-fn span-2" id="btn-sqrt"  onclick="calculateSqrt()">&#8730; Square Root</button>
+            <button class="btn btn-fn span-2" id="btn-sign"  onclick="toggleSign()">+/&#8722; Toggle</button>
+
+        </div>
+    </div>
+
+    <!-- ===== INFO PANEL ===== -->
+    <div class="info-panel">
+
+        <!-- Functions Reference -->
+        <div class="panel-card">
+            <h3>Functions Used</h3>
+            <div class="fn-list">
+
+                <div class="fn-item">
+                    <div class="fn-symbol add">+</div>
+                    <div class="fn-info">
+                        <div class="fn-name">add(a, b)</div>
+                        <div class="fn-desc">Returns a + b</div>
+                    </div>
+                </div>
+
+                <div class="fn-item">
+                    <div class="fn-symbol sub">&#8722;</div>
+                    <div class="fn-info">
+                        <div class="fn-name">subtract(a, b)</div>
+                        <div class="fn-desc">Returns a &#8722; b</div>
+                    </div>
+                </div>
+
+                <div class="fn-item">
+                    <div class="fn-symbol mul">&#215;</div>
+                    <div class="fn-info">
+                        <div class="fn-name">multiply(a, b)</div>
+                        <div class="fn-desc">Returns a &#215; b</div>
+                    </div>
+                </div>
+
+                <div class="fn-item">
+                    <div class="fn-symbol div">&#247;</div>
+                    <div class="fn-info">
+                        <div class="fn-name">divide(a, b)</div>
+                        <div class="fn-desc">Returns a &#247; b (checks &#247;0)</div>
+                    </div>
+                </div>
+
+                <div class="fn-item">
+                    <div class="fn-symbol mod">%</div>
+                    <div class="fn-info">
+                        <div class="fn-name">modulus(a, b)</div>
+                        <div class="fn-desc">Returns remainder of a &#247; b</div>
+                    </div>
+                </div>
+
+                <div class="fn-item">
+                    <div class="fn-symbol pow">^</div>
+                    <div class="fn-info">
+                        <div class="fn-name">power(a, b)</div>
+                        <div class="fn-desc">Returns a raised to power b</div>
+                    </div>
+                </div>
+
+                <div class="fn-item">
+                    <div class="fn-symbol sqrt">&#8730;</div>
+                    <div class="fn-info">
+                        <div class="fn-name">squareRoot(a)</div>
+                        <div class="fn-desc">Returns &#8730;a (checks negative)</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- History -->
+        <div class="panel-card">
+            <h3>&#128203; Calculation History</h3>
+            <div id="history-list">
+                <p class="history-empty">No calculations yet&hellip;</p>
+            </div>
+            <button class="clear-history-btn" id="clear-history-btn" onclick="clearHistory()">
+                &#128465; Clear History
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<!-- External JavaScript (loaded at end of body so HTML loads first) -->
+<script src="js/calculator.js"></script>
+
+</body>
+</html>
