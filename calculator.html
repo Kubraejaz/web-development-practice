@@ -19,7 +19,7 @@
 
     <!-- ===== CALCULATOR ===== -->
     <div class="calculator">
-        <p class="calc-title">✦ JS Calculator</p>
+        <p class="calc-title">Calculator</p>
 
         <!-- Display -->
         <div class="calc-display">
@@ -60,94 +60,12 @@
             <button class="btn btn-fn"        id="btn-pow"   onclick="appendToExpr('^')">x&#696;</button>
             <button class="btn btn-eq"        id="btn-eq"    onclick="calculate()">=</button>
 
-            <!-- Row 6: Extra Functions -->
-            <button class="btn btn-fn span-2" id="btn-sqrt"  onclick="calculateSqrt()">&#8730; Square Root</button>
-            <button class="btn btn-fn span-2" id="btn-sign"  onclick="toggleSign()">+/&#8722; Toggle</button>
+
 
         </div>
     </div>
 
-    <!-- ===== INFO PANEL ===== -->
-    <div class="info-panel">
-
-        <!-- Functions Reference -->
-        <div class="panel-card">
-            <h3>Functions Used</h3>
-            <div class="fn-list">
-
-                <div class="fn-item">
-                    <div class="fn-symbol add">+</div>
-                    <div class="fn-info">
-                        <div class="fn-name">add(a, b)</div>
-                        <div class="fn-desc">Returns a + b</div>
-                    </div>
-                </div>
-
-                <div class="fn-item">
-                    <div class="fn-symbol sub">&#8722;</div>
-                    <div class="fn-info">
-                        <div class="fn-name">subtract(a, b)</div>
-                        <div class="fn-desc">Returns a &#8722; b</div>
-                    </div>
-                </div>
-
-                <div class="fn-item">
-                    <div class="fn-symbol mul">&#215;</div>
-                    <div class="fn-info">
-                        <div class="fn-name">multiply(a, b)</div>
-                        <div class="fn-desc">Returns a &#215; b</div>
-                    </div>
-                </div>
-
-                <div class="fn-item">
-                    <div class="fn-symbol div">&#247;</div>
-                    <div class="fn-info">
-                        <div class="fn-name">divide(a, b)</div>
-                        <div class="fn-desc">Returns a &#247; b (checks &#247;0)</div>
-                    </div>
-                </div>
-
-                <div class="fn-item">
-                    <div class="fn-symbol mod">%</div>
-                    <div class="fn-info">
-                        <div class="fn-name">modulus(a, b)</div>
-                        <div class="fn-desc">Returns remainder of a &#247; b</div>
-                    </div>
-                </div>
-
-                <div class="fn-item">
-                    <div class="fn-symbol pow">^</div>
-                    <div class="fn-info">
-                        <div class="fn-name">power(a, b)</div>
-                        <div class="fn-desc">Returns a raised to power b</div>
-                    </div>
-                </div>
-
-                <div class="fn-item">
-                    <div class="fn-symbol sqrt">&#8730;</div>
-                    <div class="fn-info">
-                        <div class="fn-name">squareRoot(a)</div>
-                        <div class="fn-desc">Returns &#8730;a (checks negative)</div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- History -->
-        <div class="panel-card">
-            <h3>&#128203; Calculation History</h3>
-            <div id="history-list">
-                <p class="history-empty">No calculations yet&hellip;</p>
-            </div>
-            <button class="clear-history-btn" id="clear-history-btn" onclick="clearHistory()">
-                &#128465; Clear History
-            </button>
-        </div>
-
-    </div>
-</div>
-
+    
 <!-- External JavaScript (loaded at end of body so HTML loads first) -->
 <script src="js/calculator.js"></script>
 

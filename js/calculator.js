@@ -68,29 +68,6 @@ function modulus(a, b) {
 }
 
 
-/* -------------------------------------------------------
-   FUNCTION 6: power(a, b)
-   Returns a raised to the POWER of b.
-   Example: power(2, 8) → 256
-------------------------------------------------------- */
-function power(a, b) {
-    return Math.pow(a, b);
-}
-
-
-/* -------------------------------------------------------
-   FUNCTION 7: squareRoot(a)
-   Returns the SQUARE ROOT of a number.
-   Special case: Returns an error if a is negative.
-   Example: squareRoot(25) → 5
-------------------------------------------------------- */
-function squareRoot(a) {
-    if (a < 0) {
-        return "Error: Cannot find √ of negative number!";
-    }
-    return Math.sqrt(a);
-}
-
 
 /* -------------------------------------------------------
    FUNCTION 8: formatNumber(num)
@@ -347,71 +324,7 @@ function showError(message) {
 }
 
 
-/* -------------------------------------------------------
-   FUNCTION 20: addToHistory(expr, result)
-   Saves a calculation to the history panel on the right.
-   Input: expr — the expression string
-          result — the answer
-------------------------------------------------------- */
-function addToHistory(expr, result) {
-    var historyList = document.getElementById('history-list');
-    var clearBtn    = document.getElementById('clear-history-btn');
 
-    // Remove the "No calculations yet" placeholder
-    var empty = historyList.querySelector('.history-empty');
-    if (empty) empty.remove();
-
-    // Create history item element
-    var item = document.createElement('div');
-    item.className = 'history-item';
-    item.title     = 'Click to reuse result';
-
-    var exprSpan = document.createElement('span');
-    exprSpan.className   = 'history-expr';
-    exprSpan.textContent = expr + " =";
-
-    var valSpan = document.createElement('span');
-    valSpan.className   = 'history-val';
-    valSpan.textContent = result;
-
-    item.appendChild(exprSpan);
-    item.appendChild(valSpan);
-
-    // Click to reuse the result
-    item.addEventListener('click', function () {
-        var val = valSpan.textContent;
-        if (!isNaN(val)) {
-            expression     = val;
-            justCalculated = false;
-            updateDisplay(expression);
-        }
-    });
-
-    // Add newest at top
-    historyList.insertBefore(item, historyList.firstChild);
-
-    // Show clear button
-    clearBtn.style.display = 'block';
-
-    // Keep only 10 history items
-    var items = historyList.querySelectorAll('.history-item');
-    if (items.length > 10) {
-        historyList.removeChild(items[items.length - 1]);
-    }
-}
-
-
-/* -------------------------------------------------------
-   FUNCTION 21: clearHistory()
-   Clears all saved calculations from the history panel.
-------------------------------------------------------- */
-function clearHistory() {
-    var historyList = document.getElementById('history-list');
-    var clearBtn    = document.getElementById('clear-history-btn');
-
-    historyList.innerHTML  = '<p class="history-empty">No calculations yet…</p>';
-    clearBtn.style.display = 'none';
-}
 
 
 /* -------------------------------------------------------
