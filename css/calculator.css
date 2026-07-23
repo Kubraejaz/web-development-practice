@@ -1,9 +1,3 @@
-/* ================================================ */
-/*   Nimbus Calculator – calculator.css             */
-/*   Linked from: calculator.html                  */
-/* ================================================ */
-
-/* ===== RESET & BASE ===== */
 *, *::before, *::after {
     margin: 0;
     padding: 0;
@@ -20,16 +14,13 @@ body {
     padding: 20px;
 }
 
-/* ===== WRAPPER ===== */
 .page-wrapper {
     display: flex;
-    gap: 28px;
+    justify-content: center;
     align-items: flex-start;
-    max-width: 900px;
     width: 100%;
 }
 
-/* ===== CALCULATOR CARD ===== */
 .calculator {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(20px);
@@ -37,15 +28,14 @@ body {
     border-radius: 24px;
     padding: 28px;
     width: 340px;
-    display: center;
     min-width: 340px;
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4),
-                inset 0 1px 0 rgba(255,255,255,0.1);
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .calc-title {
     text-align: center;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255, 255, 255, 0.5);
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 2px;
@@ -53,13 +43,12 @@ body {
     margin-bottom: 20px;
 }
 
-/* ===== DISPLAY ===== */
 .calc-display {
     background: rgba(0, 0, 0, 0.35);
     border-radius: 14px;
     padding: 16px 20px;
     margin-bottom: 20px;
-    border: 1px solid rgba(255,255,255,0.07);
+    border: 1px solid rgba(255, 255, 255, 0.07);
     min-height: 90px;
     display: flex;
     flex-direction: column;
@@ -69,7 +58,7 @@ body {
 }
 
 #expression {
-    color: rgba(255,255,255,0.45);
+    color: rgba(255, 255, 255, 0.45);
     font-size: 13px;
     font-weight: 400;
     min-height: 18px;
@@ -93,7 +82,6 @@ body {
     font-size: 18px;
 }
 
-/* ===== BUTTONS GRID ===== */
 .calc-buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -116,23 +104,21 @@ body {
     transform: scale(0.93);
 }
 
-/* Number buttons */
 .btn-num {
-    background: rgba(255,255,255,0.08);
+    background: rgba(255, 255, 255, 0.08);
     color: white;
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .btn-num:hover {
-    background: rgba(255,255,255,0.14);
-    border-color: rgba(255,255,255,0.15);
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.15);
 }
 
-/* Operator buttons */
 .btn-op {
     background: rgba(124, 86, 196, 0.4);
     color: #c4a8ff;
-    border: 1px solid rgba(124,86,196,0.3);
+    border: 1px solid rgba(124, 86, 196, 0.3);
 }
 
 .btn-op:hover {
@@ -140,11 +126,10 @@ body {
     color: white;
 }
 
-/* Special: Clear, Backspace */
 .btn-clear {
     background: rgba(239, 68, 68, 0.2);
     color: #fca5a5;
-    border: 1px solid rgba(239,68,68,0.2);
+    border: 1px solid rgba(239, 68, 68, 0.2);
 }
 
 .btn-clear:hover {
@@ -152,24 +137,22 @@ body {
     color: white;
 }
 
-/* Equals button */
 .btn-eq {
     background: linear-gradient(135deg, #7c56c4 0%, #5c3a9e 100%);
     color: white;
     border: none;
-    box-shadow: 0 6px 18px rgba(92,58,158,0.5);
+    box-shadow: 0 6px 18px rgba(92, 58, 158, 0.5);
 }
 
 .btn-eq:hover {
     filter: brightness(1.15);
-    box-shadow: 0 8px 22px rgba(92,58,158,0.7);
+    box-shadow: 0 8px 22px rgba(92, 58, 158, 0.7);
 }
 
-/* Special function buttons */
 .btn-fn {
     background: rgba(16, 185, 129, 0.15);
     color: #6ee7b7;
-    border: 1px solid rgba(16,185,129,0.2);
+    border: 1px solid rgba(16, 185, 129, 0.2);
     font-size: 13px;
 }
 
@@ -178,17 +161,10 @@ body {
     color: white;
 }
 
-/* Span 2 columns */
-.span-2 {
-    grid-column: span 2;
-}
-
-/* ===== RESPONSIVE ===== */
 @media (max-width: 720px) {
     .page-wrapper { flex-direction: column; align-items: center; }
-    .info-panel { width: 340px; }
 }
 
 @media (max-width: 380px) {
-    .calculator, .info-panel { width: 100%; min-width: unset; }
+    .calculator { width: 100%; min-width: unset; }
 }

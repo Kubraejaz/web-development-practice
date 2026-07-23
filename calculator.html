@@ -4,70 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS Calculator – Functions Assignment</title>
-    <meta name="description" content="A JavaScript calculator demonstrating functions with addition, subtraction, multiplication, division and more.">
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- External CSS -->
     <link rel="stylesheet" href="css/calculator.css">
 </head>
 <body>
+    <div class="page-wrapper">
+        <div class="calculator">
+            <p class="calc-title">Calculator</p>
 
-<div class="page-wrapper">
+            <div class="calc-display">
+                <div id="expression"></div>
+                <div id="result">0</div>
+            </div>
 
-    <!-- ===== CALCULATOR ===== -->
-    <div class="calculator">
-        <p class="calc-title">Calculator</p>
+            <div class="calc-buttons">
+                <button class="btn btn-clear" onclick="clearAll()">AC</button>
+                <button class="btn btn-clear" onclick="backspace()">&#9003;</button>
+                <button class="btn btn-fn" onclick="appendToExpr('%')">%</button>
+                <button class="btn btn-op" onclick="appendToExpr('&#247;')">&#247;</button>
 
-        <!-- Display -->
-        <div class="calc-display">
-            <div id="expression"></div>
-            <div id="result">0</div>
-        </div>
+                <button class="btn btn-num" onclick="appendToExpr('7')">7</button>
+                <button class="btn btn-num" onclick="appendToExpr('8')">8</button>
+                <button class="btn btn-num" onclick="appendToExpr('9')">9</button>
+                <button class="btn btn-op" onclick="appendToExpr('&#215;')">&#215;</button>
 
-        <!-- Buttons -->
-        <div class="calc-buttons">
+                <button class="btn btn-num" onclick="appendToExpr('4')">4</button>
+                <button class="btn btn-num" onclick="appendToExpr('5')">5</button>
+                <button class="btn btn-num" onclick="appendToExpr('6')">6</button>
+                <button class="btn btn-op" onclick="appendToExpr('-')">&#8722;</button>
 
-            <!-- Row 1 -->
-            <button class="btn btn-clear"     id="btn-ac"    onclick="clearAll()">AC</button>
-            <button class="btn btn-clear"     id="btn-back"  onclick="backspace()">&#9003;</button>
-            <button class="btn btn-fn"        id="btn-mod"   onclick="appendToExpr('%')">%</button>
-            <button class="btn btn-op"        id="btn-div"   onclick="appendToExpr('&#247;')">&#247;</button>
+                <button class="btn btn-num" onclick="appendToExpr('1')">1</button>
+                <button class="btn btn-num" onclick="appendToExpr('2')">2</button>
+                <button class="btn btn-num" onclick="appendToExpr('3')">3</button>
+                <button class="btn btn-op" onclick="appendToExpr('+')">+</button>
 
-            <!-- Row 2 -->
-            <button class="btn btn-num"       id="btn-7"     onclick="appendToExpr('7')">7</button>
-            <button class="btn btn-num"       id="btn-8"     onclick="appendToExpr('8')">8</button>
-            <button class="btn btn-num"       id="btn-9"     onclick="appendToExpr('9')">9</button>
-            <button class="btn btn-op"        id="btn-mul"   onclick="appendToExpr('&#215;')">&#215;</button>
-
-            <!-- Row 3 -->
-            <button class="btn btn-num"       id="btn-4"     onclick="appendToExpr('4')">4</button>
-            <button class="btn btn-num"       id="btn-5"     onclick="appendToExpr('5')">5</button>
-            <button class="btn btn-num"       id="btn-6"     onclick="appendToExpr('6')">6</button>
-            <button class="btn btn-op"        id="btn-sub"   onclick="appendToExpr('-')">&#8722;</button>
-
-            <!-- Row 4 -->
-            <button class="btn btn-num"       id="btn-1"     onclick="appendToExpr('1')">1</button>
-            <button class="btn btn-num"       id="btn-2"     onclick="appendToExpr('2')">2</button>
-            <button class="btn btn-num"       id="btn-3"     onclick="appendToExpr('3')">3</button>
-            <button class="btn btn-op"        id="btn-add"   onclick="appendToExpr('+')">+</button>
-
-            <!-- Row 5 -->
-            <button class="btn btn-num"       id="btn-0"     onclick="appendToExpr('0')">0</button>
-            <button class="btn btn-num"       id="btn-dot"   onclick="appendDecimal()">.</button>
-            <button class="btn btn-fn"        id="btn-pow"   onclick="appendToExpr('^')">x&#696;</button>
-            <button class="btn btn-eq"        id="btn-eq"    onclick="calculate()">=</button>
-
-
-
+                <button class="btn btn-num" onclick="appendToExpr('0')">0</button>
+                <button class="btn btn-num" onclick="appendDecimal()">.</button>
+                <button class="btn btn-fn" onclick="appendToExpr('^')">x&#696;</button>
+                <button class="btn btn-eq" onclick="calculate()">=</button>
+            </div>
         </div>
     </div>
 
-    
-<!-- External JavaScript (loaded at end of body so HTML loads first) -->
-<script src="js/calculator.js"></script>
-
+    <script src="js/calculator.js"></script>
 </body>
 </html>
