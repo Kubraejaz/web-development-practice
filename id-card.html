@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ID Card Studio – Interactive Card Designer</title>
+  <meta name="description" content="Design, preview, customize and print standard employee and student ID cards with real-time 3D preview and custom color themes.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/id-card.css">
+</head>
+<body>
+
+  <!-- App Header Bar -->
+  <header class="app-header">
+    <div class="brand-container">
+      <div class="brand-logo">B</div>
+      <div>
+        <h1 class="brand-title">ID Card Studio</h1>
+        <p class="brand-subtitle">Nimbus Design System & Creator</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <a href="dashboard.html" class="btn btn-outline">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back to Dashboard
+      </a>
+      <button id="btnPrint" class="btn btn-primary">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z"/></svg>
+        Print / Download ID Card
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <div class="app-container">
+    
+    <!-- Left Stage: Preview Area -->
+    <main class="preview-section">
+      
+      <!-- Toolbar -->
+      <div class="preview-toolbar">
+        <button id="btnFlipCard" class="btn btn-secondary">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          Flip Card (3D)
+        </button>
+        <div style="width: 1px; height: 20px; background: rgba(255,255,255,0.15); margin: 0 4px;"></div>
+        <button id="btnViewFlip" class="view-mode-btn active">Single (Flip)</button>
+        <button id="btnViewSide" class="view-mode-btn">Side-by-Side</button>
+      </div>
+
+      <!-- Canvas -->
+      <div id="cardsCanvas" class="cards-canvas">
+        
+        <!-- 3D Flip Wrapper (Single View Mode) -->
+        <div id="flipCardWrapper" class="flip-card-wrapper">
+          <div class="flip-card-inner">
+            
+            <!-- FRONT SIDE -->
+            <div class="id-card card-front">
+              
+              <!-- Left Vertical Department Bar -->
+              <div class="card-front-sidebar">
+                <span class="sidebar-text val-dept">Computer Science</span>
+              </div>
+
+              <!-- Main Front Content -->
+              <div class="card-front-main">
+                
+                <!-- Header Brand Logo -->
+                <div class="card-logo-header">
+                  <svg class="shield-logo-icon" viewBox="0 0 100 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 5L15 20V50C15 72.5 30 92.5 50 100C70 92.5 85 72.5 85 50V20L50 5Z" stroke="var(--theme-color)" stroke-width="8" fill="none" />
+                    <text x="50" y="65" font-family="'Inter', sans-serif" font-size="42" font-weight="800" fill="var(--theme-color)" text-anchor="middle">B</text>
+                  </svg>
+                  <div class="brand-name-text val-brand">BRAND NAME</div>
+                  <div class="brand-tagline-text val-tagline">TAGLINE HERE</div>
+                </div>
+
+                <!-- Profile Photo -->
+                <div class="avatar-container">
+                  <img class="avatar-image card-avatar-img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80" alt="Member Photo" />
+                </div>
+
+                <!-- Name & Title -->
+                <div class="card-identity">
+                  <h2 class="member-name val-name">Siyara Shukoor</h2>
+                  <p class="member-title val-title">Senior Developer</p>
+                </div>
+
+                <!-- Joining & Expiry Grid -->
+                <div class="dates-block">
+                  <div class="date-row">
+                    <span class="date-label">Joining:</span>
+                    <span class="date-value val-joining">01-01-2020</span>
+                  </div>
+                  <div class="date-row">
+                    <span class="date-label">Expiry:</span>
+                    <span class="date-value val-expiry">01-01-2025</span>
+                  </div>
+                </div>
+
+                <!-- Signature Block -->
+                <div class="signature-block">
+                  <span class="sig-label">Signature:</span>
+                  <div class="sig-line-container">
+                    <span class="sig-text val-signature">Siyara Shukoor</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- BACK SIDE -->
+            <div class="id-card card-back">
+              
+              <!-- Top Brand Header -->
+              <div class="card-back-header">
+                <svg class="shield-logo-icon" viewBox="0 0 100 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M50 5L15 20V50C15 72.5 30 92.5 50 100C70 92.5 85 72.5 85 50V20L50 5Z" stroke="#ffffff" stroke-width="8" fill="none" />
+                  <text x="50" y="65" font-family="'Inter', sans-serif" font-size="42" font-weight="800" fill="#ffffff" text-anchor="middle">B</text>
+                </svg>
+                <div class="brand-name-text val-brand">BRAND NAME</div>
+                <div class="brand-tagline-text val-tagline">TAGLINE HERE</div>
+              </div>
+
+              <!-- Details Grid -->
+              <div class="back-details-list">
+                <div class="back-detail-item">
+                  <span class="back-detail-label">Designation:</span>
+                  <span class="back-detail-val val-title">Senior Developer</span>
+                </div>
+                <div class="back-detail-item">
+                  <span class="back-detail-label">ID Number :</span>
+                  <span class="back-detail-val val-idnum">CS-2020-001</span>
+                </div>
+                <div class="back-detail-item">
+                  <span class="back-detail-label">Email :</span>
+                  <span class="back-detail-val val-email">siyara@example.com</span>
+                </div>
+                <div class="back-detail-item">
+                  <span class="back-detail-label">Phone Number :</span>
+                  <span class="back-detail-val val-phone">+1 234 567 8900</span>
+                </div>
+              </div>
+
+              <!-- Instructions Section -->
+              <div class="instructions-section">
+                <h3 class="section-title-back">Instructions</h3>
+                <ul class="instructions-list val-instructions-list">
+                  <li>Lorem ipsum dolor sit amet consectetur</li>
+                  <li>Lorem ipsum dolor sit amet consectetur</li>
+                  <li>Lorem ipsum dolor sit amet consectetur</li>
+                  <li>Lorem ipsum dolor sit amet consectetur</li>
+                </ul>
+              </div>
+
+              <!-- Contact Us Section -->
+              <div class="contact-section">
+                <h3 class="section-title-back" style="margin-bottom: 0.1rem;">Contact Us</h3>
+                <div class="contact-row">
+                  <strong>Email:</strong> <span class="val-address">youremail@gmail.com</span>
+                </div>
+                <div class="contact-row">
+                  <strong>Address:</strong> <span class="val-address">123 anywhere street 13, state</span>
+                </div>
+              </div>
+
+              <!-- QR Code Container -->
+              <div class="qr-container">
+                <div class="qr-code-box">
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Siyara+Shukoor+CS-2020-001" alt="QR Verification" />
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Side-by-side View Container -->
+        <div class="side-by-side-container">
+          
+          <!-- Static Front Card -->
+          <div class="id-card static-card card-front">
+            <div class="card-front-sidebar">
+              <span class="sidebar-text val-dept">Computer Science</span>
+            </div>
+            <div class="card-front-main">
+              <div class="card-logo-header">
+                <svg class="shield-logo-icon" viewBox="0 0 100 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M50 5L15 20V50C15 72.5 30 92.5 50 100C70 92.5 85 72.5 85 50V20L50 5Z" stroke="var(--theme-color)" stroke-width="8" fill="none" />
+                  <text x="50" y="65" font-family="'Inter', sans-serif" font-size="42" font-weight="800" fill="var(--theme-color)" text-anchor="middle">B</text>
+                </svg>
+                <div class="brand-name-text val-brand">BRAND NAME</div>
+                <div class="brand-tagline-text val-tagline">TAGLINE HERE</div>
+              </div>
+              <div class="avatar-container">
+                <img class="avatar-image card-avatar-img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80" alt="Member Photo" />
+              </div>
+              <div class="card-identity">
+                <h2 class="member-name val-name">Siyara Shukoor</h2>
+                <p class="member-title val-title">Senior Developer</p>
+              </div>
+              <div class="dates-block">
+                <div class="date-row">
+                  <span class="date-label">Joining:</span>
+                  <span class="date-value val-joining">01-01-2020</span>
+                </div>
+                <div class="date-row">
+                  <span class="date-label">Expiry:</span>
+                  <span class="date-value val-expiry">01-01-2025</span>
+                </div>
+              </div>
+              <div class="signature-block">
+                <span class="sig-label">Signature:</span>
+                <div class="sig-line-container">
+                  <span class="sig-text val-signature">Siyara Shukoor</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Static Back Card -->
+          <div class="id-card static-card card-back">
+            <div class="card-back-header">
+              <svg class="shield-logo-icon" viewBox="0 0 100 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50 5L15 20V50C15 72.5 30 92.5 50 100C70 92.5 85 72.5 85 50V20L50 5Z" stroke="#ffffff" stroke-width="8" fill="none" />
+                <text x="50" y="65" font-family="'Inter', sans-serif" font-size="42" font-weight="800" fill="#ffffff" text-anchor="middle">B</text>
+              </svg>
+              <div class="brand-name-text val-brand">BRAND NAME</div>
+              <div class="brand-tagline-text val-tagline">TAGLINE HERE</div>
+            </div>
+            <div class="back-details-list">
+              <div class="back-detail-item">
+                <span class="back-detail-label">Designation:</span>
+                <span class="back-detail-val val-title">Senior Developer</span>
+              </div>
+              <div class="back-detail-item">
+                <span class="back-detail-label">ID Number :</span>
+                <span class="back-detail-val val-idnum">CS-2020-001</span>
+              </div>
+              <div class="back-detail-item">
+                <span class="back-detail-label">Email :</span>
+                <span class="back-detail-val val-email">siyara@example.com</span>
+              </div>
+              <div class="back-detail-item">
+                <span class="back-detail-label">Phone Number :</span>
+                <span class="back-detail-val val-phone">+1 234 567 8900</span>
+              </div>
+            </div>
+            <div class="instructions-section">
+              <h3 class="section-title-back">Instructions</h3>
+              <ul class="instructions-list val-instructions-list">
+                <li>Lorem ipsum dolor sit amet consectetur</li>
+                <li>Lorem ipsum dolor sit amet consectetur</li>
+                <li>Lorem ipsum dolor sit amet consectetur</li>
+                <li>Lorem ipsum dolor sit amet consectetur</li>
+              </ul>
+            </div>
+            <div class="contact-section">
+              <h3 class="section-title-back" style="margin-bottom: 0.1rem;">Contact Us</h3>
+              <div class="contact-row">
+                <strong>Email:</strong> <span class="val-address">youremail@gmail.com</span>
+              </div>
+              <div class="contact-row">
+                <strong>Address:</strong> <span class="val-address">123 anywhere street 13, state</span>
+              </div>
+            </div>
+            <div class="qr-container">
+              <div class="qr-code-box">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Siyara+Shukoor+CS-2020-001" alt="QR Verification" />
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Right Sidebar: Customizer -->
+    <aside class="editor-sidebar">
+      <div class="sidebar-title-row">
+        <h2 class="sidebar-title">Card Customizer</h2>
+        <button id="btnReset" class="btn btn-outline" style="padding: 0.3rem 0.6rem; font-size: 0.75rem;">Reset</button>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <div class="editor-tabs">
+        <button class="tab-btn active" data-tab="info">Member</button>
+        <button class="tab-btn" data-tab="back">Back Side</button>
+        <button class="tab-btn" data-tab="branding">Branding</button>
+        <button class="tab-btn" data-tab="photo">Photo</button>
+      </div>
+
+      <!-- TAB 1: Member Info -->
+      <div id="tab-info" class="tab-content active">
+        <div class="form-group">
+          <label class="form-label" for="inputName">Full Name</label>
+          <input type="text" id="inputName" class="form-input" value="Siyara Shukoor" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="inputTitle">Designation / Title</label>
+          <input type="text" id="inputTitle" class="form-input" value="Senior Developer" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="inputDept">Department (Vertical Stripe)</label>
+          <input type="text" id="inputDept" class="form-input" value="Computer Science" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="inputIdNum">ID Number</label>
+          <input type="text" id="inputIdNum" class="form-input" value="CS-2020-001" />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="inputJoining">Joining Date</label>
+            <input type="text" id="inputJoining" class="form-input" value="01-01-2020" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inputExpiry">Expiry Date</label>
+            <input type="text" id="inputExpiry" class="form-input" value="01-01-2025" />
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: Back Side Content -->
+      <div id="tab-back" class="tab-content">
+        <div class="form-group">
+          <label class="form-label" for="inputEmail">Email Address</label>
+          <input type="email" id="inputEmail" class="form-input" value="siyara@example.com" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="inputPhone">Phone Number</label>
+          <input type="text" id="inputPhone" class="form-input" value="+1 234 567 8900" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="inputInstructions">Instructions (One per line)</label>
+          <textarea id="inputInstructions" class="form-textarea">Lorem ipsum dolor sit amet consectetur
+Lorem ipsum dolor sit amet consectetur
+Lorem ipsum dolor sit amet consectetur
+Lorem ipsum dolor sit amet consectetur</textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="inputAddress">Contact Address</label>
+          <input type="text" id="inputAddress" class="form-input" value="123 anywhere street 13, state" />
+        </div>
+
+        <div class="form-group" style="flex-direction: row; align-items: center; justify-content: space-between; margin-top: 0.5rem;">
+          <label class="form-label" for="toggleQrCode" style="margin: 0;">Show QR Code</label>
+          <input type="checkbox" id="toggleQrCode" checked style="width: 18px; height: 18px; cursor: pointer;" />
+        </div>
+      </div>
+
+      <!-- TAB 3: Branding & Theme -->
+      <div id="tab-branding" class="tab-content">
+        <div class="form-group">
+          <label class="form-label" for="inputBrand">Brand Name</label>
+          <input type="text" id="inputBrand" class="form-input" value="BRAND NAME" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="inputTagline">Tagline</label>
+          <input type="text" id="inputTagline" class="form-input" value="TAGLINE HERE" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Theme Color Palette</label>
+          <div class="theme-picker">
+            <div class="theme-swatch active" data-color="#0075ff" style="background: #0075ff;" title="Royal Blue"></div>
+            <div class="theme-swatch" data-color="#059669" style="background: #059669;" title="Emerald Green"></div>
+            <div class="theme-swatch" data-color="#7c3aed" style="background: #7c3aed;" title="Royal Purple"></div>
+            <div class="theme-swatch" data-color="#dc2626" style="background: #dc2626;" title="Crimson Red"></div>
+            <div class="theme-swatch" data-color="#0f172a" style="background: #0f172a;" title="Midnight Dark"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 4: Photo & Signature -->
+      <div id="tab-photo" class="tab-content">
+        <div class="form-group">
+          <label class="form-label">Profile Photo Upload</label>
+          <label class="photo-upload-box" for="photoInput">
+            <div class="upload-icon">📷</div>
+            <div class="upload-text">Click to upload custom photo</div>
+            <input type="file" id="photoInput" accept="image/*" style="display: none;" />
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Preset Avatars</label>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <img class="avatar-preset" data-src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" style="width: 44px; height: 44px; border-radius: 50%; cursor: pointer; border: 2px solid rgba(255,255,255,0.2);" />
+            <img class="avatar-preset" data-src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" style="width: 44px; height: 44px; border-radius: 50%; cursor: pointer; border: 2px solid rgba(255,255,255,0.2);" />
+            <img class="avatar-preset" data-src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop&q=80" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80" style="width: 44px; height: 44px; border-radius: 50%; cursor: pointer; border: 2px solid rgba(255,255,255,0.2);" />
+            <img class="avatar-preset" data-src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80" style="width: 44px; height: 44px; border-radius: 50%; cursor: pointer; border: 2px solid rgba(255,255,255,0.2);" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="inputSignature">Signature Text</label>
+          <input type="text" id="inputSignature" class="form-input" value="Siyara Shukoor" />
+        </div>
+      </div>
+
+    </aside>
+
+  </div>
+
+  <script src="js/id-card.js"></script>
+</body>
+</html>
