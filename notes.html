@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nimbus Notes & Task Studio – Practice Workspace</title>
+    <meta name="description" content="Interactive notes studio and task manager featuring categories, real-time search, tag filtering, color accents, and persistent storage.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/notes.css">
+</head>
+<body class="theme-dark">
+
+    <!-- Top Navigation Bar -->
+    <header class="notes-nav">
+        <div class="nav-brand">
+            <div class="brand-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="16" y1="13" x2="8" y2="13"/>
+                    <line x1="16" y1="17" x2="8" y2="17"/>
+                    <line x1="10" y1="9" x2="8" y2="9"/>
+                </svg>
+            </div>
+            <div class="brand-text">
+                <span class="brand-title">Nimbus Studio</span>
+                <span class="brand-badge">Notes & Tasks</span>
+            </div>
+        </div>
+
+        <nav class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="dashboard.html" class="nav-link">Dashboard</a>
+            <a href="portfolio-builder.html" class="nav-link">Portfolio Studio</a>
+            <a href="id-card.html" class="nav-link">ID Card Studio</a>
+            <a href="calculator.html" class="nav-link">JS Calculator</a>
+            <a href="notes.html" class="nav-link active">Notes Practice</a>
+        </nav>
+
+        <div class="nav-actions">
+            <button id="btnToggleTheme" class="icon-btn" title="Toggle Theme">
+                <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+                </svg>
+            </button>
+            <button id="btnNewNote" class="btn btn-primary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="12" y1="5" x2="12" y2="19"/>
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+                <span>New Note</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- App Layout -->
+    <div class="app-layout">
+
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <p class="sidebar-label">QUICK VIEWS</p>
+                <ul class="nav-list">
+                    <li class="nav-item active" data-filter="all">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                        <span>All Notes</span>
+                        <span id="cntAll" class="badge-count">0</span>
+                    </li>
+                    <li class="nav-item" data-filter="pinned">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <span>Pinned Notes</span>
+                        <span id="cntPinned" class="badge-count">0</span>
+                    </li>
+                    <li class="nav-item" data-filter="tasks">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                        <span>Action Tasks</span>
+                        <span id="cntTasks" class="badge-count">0</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <p class="sidebar-label">CATEGORIES</p>
+                <ul class="nav-list" id="categoryList">
+                    <li class="nav-item" data-category="Work">
+                        <span class="cat-dot dot-work"></span>
+                        <span>Work Projects</span>
+                        <span id="cntWork" class="badge-count">0</span>
+                    </li>
+                    <li class="nav-item" data-category="Personal">
+                        <span class="cat-dot dot-personal"></span>
+                        <span>Personal</span>
+                        <span id="cntPersonal" class="badge-count">0</span>
+                    </li>
+                    <li class="nav-item" data-category="Code">
+                        <span class="cat-dot dot-code"></span>
+                        <span>Code & Snippets</span>
+                        <span id="cntCode" class="badge-count">0</span>
+                    </li>
+                    <li class="nav-item" data-category="Ideas">
+                        <span class="cat-dot dot-ideas"></span>
+                        <span>Ideas & Brainstorm</span>
+                        <span id="cntIdeas" class="badge-count">0</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <p class="sidebar-label">TAG CLOUD</p>
+                <div class="tags-cloud" id="tagsCloud">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="storage-card">
+                    <div class="storage-info">
+                        <span>LocalStorage Active</span>
+                        <span id="storagePct">Auto-Saved</span>
+                    </div>
+                    <div class="storage-bar">
+                        <div class="storage-fill" style="width: 100%;"></div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Workspace -->
+        <main class="main-content">
+
+            <!-- Control Bar -->
+            <div class="control-bar">
+                <div class="search-box">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                    </svg>
+                    <input type="text" id="searchInput" placeholder="Search notes by title, content or #tags...">
+                    <button id="btnClearSearch" class="btn-clear-search" hidden>&times;</button>
+                </div>
+
+                <div class="view-controls">
+                    <div class="select-wrapper">
+                        <select id="sortSelect">
+                            <option value="updated">Recently Updated</option>
+                            <option value="created">Date Created</option>
+                            <option value="title">Title (A-Z)</option>
+                            <option value="priority">Priority Level</option>
+                        </select>
+                    </div>
+
+                    <div class="view-mode-group">
+                        <button class="view-btn active" data-view="grid" title="Grid View">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                        </button>
+                        <button class="view-btn" data-view="list" title="List View">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Active Filters Bar -->
+            <div class="active-filters" id="activeFiltersBar" style="display: none;">
+                <span class="filter-label">Active Filter:</span>
+                <span id="activeFilterBadge" class="filter-badge">All</span>
+                <button id="btnClearFilter" class="btn-reset-filter">Reset Filter</button>
+            </div>
+
+            <!-- Notes Display Grid -->
+            <div id="notesContainer" class="notes-grid">
+                <!-- Dynamic Notes Rendered Here -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <div class="empty-icon">📝</div>
+                <h3>No notes found</h3>
+                <p>Try searching for something else or create a new note to get started.</p>
+                <button id="btnEmptyCreate" class="btn btn-primary" style="margin-top: 16px;">Create New Note</button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Note Modal / Editor Drawer -->
+    <div id="noteModal" class="modal-backdrop" aria-hidden="true">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2 id="modalTitle">Create New Note</h2>
+                <button id="btnCloseModal" class="btn-close">&times;</button>
+            </div>
+
+            <form id="noteForm" class="modal-body">
+                <input type="hidden" id="noteId">
+
+                <div class="form-group">
+                    <label for="inputTitle">Title</label>
+                    <input type="text" id="inputTitle" placeholder="Note title..." required autofocus>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="selectCategory">Category</label>
+                        <select id="selectCategory">
+                            <option value="Work">Work Projects</option>
+                            <option value="Personal">Personal</option>
+                            <option value="Code">Code & Snippets</option>
+                            <option value="Ideas">Ideas & Brainstorm</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="selectPriority">Priority</label>
+                        <select id="selectPriority">
+                            <option value="Low">Low</option>
+                            <option value="Medium" selected>Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Color Theme Accent</label>
+                    <div class="color-picker" id="colorPicker">
+                        <label class="color-option">
+                            <input type="radio" name="accentColor" value="violet" checked>
+                            <span class="color-swatch swatch-violet"></span>
+                        </label>
+                        <label class="color-option">
+                            <input type="radio" name="accentColor" value="emerald">
+                            <span class="color-swatch swatch-emerald"></span>
+                        </label>
+                        <label class="color-option">
+                            <input type="radio" name="accentColor" value="sapphire">
+                            <span class="color-swatch swatch-sapphire"></span>
+                        </label>
+                        <label class="color-option">
+                            <input type="radio" name="accentColor" value="amber">
+                            <span class="color-swatch swatch-amber"></span>
+                        </label>
+                        <label class="color-option">
+                            <input type="radio" name="accentColor" value="rose">
+                            <span class="color-swatch swatch-rose"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputTags">Tags (comma separated or with #)</label>
+                    <input type="text" id="inputTags" placeholder="e.g. #javascript, #nimbus, #ui-design">
+                </div>
+
+                <div class="form-group">
+                    <label for="inputContent">Content / Details</label>
+                    <textarea id="inputContent" rows="6" placeholder="Write your note markdown or text here..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <div class="checkbox-row">
+                        <input type="checkbox" id="chkPinned">
+                        <label for="chkPinned">Pin to top of list</label>
+                    </div>
+                </div>
+
+                <!-- Checklist builder section -->
+                <div class="form-group">
+                    <label>Interactive Checklists / Sub-tasks</label>
+                    <div id="checklistItems" class="checklist-builder">
+                        <!-- Dynamic items -->
+                    </div>
+                    <button type="button" id="btnAddChecklistItem" class="btn-add-item">+ Add Task Item</button>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" id="btnCancelModal" class="btn btn-secondary">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Note</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast"></div>
+
+    <script src="js/notes.js"></script>
+</body>
+</html>
