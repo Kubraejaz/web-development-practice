@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript DOM Events Showcase & Interactive Lab | Nimbus Studio</title>
+    <meta name="description" content="A comprehensive interactive lab and reference guide for JavaScript DOM Event listeners including Mouse, Keyboard, Form, Window, Clipboard, and Drag & Drop events.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/events.css">
+</head>
+<body>
+
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav">
+        <a href="index.html" class="nav-brand">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            <span>Nimbus Events Lab</span>
+        </a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="dashboard.html" class="nav-link">Dashboard</a>
+            <a href="calculator.html" class="nav-link">JS Calculator</a>
+            <a href="notes.html" class="nav-link">Notes Studio</a>
+            <a href="portfolio-builder.html" class="nav-link">Portfolio</a>
+            <a href="id-card.html" class="nav-link">ID Card</a>
+        </div>
+    </nav>
+
+    <!-- Hero Header -->
+    <header class="hero-header">
+        <span class="badge-tag">COMPLETE EVENT REFERENCE & INTERACTIVE PLAYGROUND</span>
+        <h1>JavaScript DOM Events Showcase</h1>
+        <p>Explore real-time demonstrations and clean copy-ready code snippets for every major DOM event in modern Web Development.</p>
+    </header>
+
+    <!-- Filter Category Tabs -->
+    <div class="category-tabs">
+        <button class="tab-btn active" data-category="all">✨ All Events</button>
+        <button class="tab-btn" data-category="mouse">🖱️ Mouse Events</button>
+        <button class="tab-btn" data-category="keyboard">⌨️ Keyboard Events</button>
+        <button class="tab-btn" data-category="form">📝 Form & Input</button>
+        <button class="tab-btn" data-category="clipboard">📋 Clipboard & Selection</button>
+        <button class="tab-btn" data-category="drag">📦 Drag & Drop</button>
+        <button class="tab-btn" data-category="window">🖥️ Window & Page Load</button>
+    </div>
+
+    <!-- Main Two-Column Content Grid -->
+    <div class="main-layout">
+
+        <!-- Left Column: Categorized Cards -->
+        <main class="events-container">
+
+            <!-- ========================================== -->
+            <!-- SECTION 1: MOUSE EVENTS -->
+            <!-- ========================================== -->
+            <section class="event-section" data-category="mouse">
+                <h2 class="section-title">🖱️ Mouse Events</h2>
+
+                <div class="cards-grid">
+
+                    <!-- click Event -->
+                    <div class="event-card">
+                        <div class="card-header">
+                            <div>
+                                <div class="event-name">click</div>
+                                <div class="event-desc">Fires when an element is pressed and released.</div>
+                            </div>
+                        </div>
+                        <div class="demo-area" id="demoClickBox">
+                            <button class="demo-btn" id="demoClickBtn">Click Me</button>
+                            <div class="output-badge">Click button to test</div>
+                        </div>
+                        <div class="code-container">
+                            <div class="code-header">
+                                <span>JavaScript Example</span>
+                                <button class="copy-btn">Copy</button>
+                            </div>
+                            <pre><code><span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"myButton"</span>).<span class="fn">addEventListener</span>(<span class="str">"click"</span>, <span class="kw">function</span>(<span class="fn">e</span>) {
+    <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"myParagraph"</span>).<span class="fn">textContent</span> = <span class="str">"Button clicked!"</span>;
+    <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"myParagraph"</span>).<span class="fn">style</span>.color = <span class="str">"red"</span>;
+});</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- dblclick Event -->
+                    <div class="event-card">
+                        <div class="card-header">
+                            <div>
+                                <div class="event-name">dblclick</div>
+                                <div class="event-desc">Fires when an element is double-clicked rapidly.</div>
+                            </div>
+                        </div>
+                        <div class="demo-area" id="demoDblClickBox">
+                            <button class="demo-btn" id="demoDblClickBtn" style="background: linear-gradient(135deg, #0ea5e9, #2563eb);">Double Click Me</button>
+                            <div class="output-badge">Double-click button</div>
+                        </div>
+                        <div class="code-container">
+                            <div class="code-header">
+                                <span>JavaScript Example</span>
+                                <button class="copy-btn">Copy</button>
+                            </div>
+                            <pre><code><span class="kw">element</span>.<span class="fn">addEventListener</span>(<span class="str">"dblclick"</span>, <span class="kw">function</span>(<span class="fn">e</span>) {
+    <span class="kw">console</span>.<span class="fn">log</span>(<span class="str">"Element double-clicked!"</span>);
+});</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- mousedown & mouseup -->
+                    <div class="event-card">
+                        <div class="card-header">
+                            <div>
+                                <div class="event-name">mousedown / mouseup</div>
+                                <div class="event-desc">Fires as soon as a mouse button is pressed down or released.</div>
+                            </div>
+                        </div>
+                        <div class="demo-area" id="demoMouseDownUpBox">
+                            <button class="demo-btn" id="demoMouseDownUpBtn" style="background: linear-gradient(135deg, #10b981, #059669);">Press & Hold Me</button>
+                            <div class="output-badge">Press and hold mouse button</div>
+                        </div>
+                        <div class="code-container">
+                            <div class="code-header">
+                                <span>JavaScript Example</span>
+                                <button class="copy-btn">Copy</button>
+                            </div>
+                            <pre><code><span class="kw">element</span>.<span class="fn">addEventListener</span>(<span class="str">"mousedown"</span>, <span class="kw">function</span>() {
+    <span class="cm">// Mouse button held down</span>
+});
+<span class="kw">element</span>.<span class="fn">addEventListener</span>(<span class="str">"mouseup"</span>, <span class="kw">function</span>() {
+    <span class="cm">// Mouse button released</span>
+});</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- mouseenter & mouseleave -->
+                    <div class="event-card">
+                        <div class="card-header">
+                            <div>
+                                <div class="event-name">mouseenter / mouseleave</div>
+                                <div class="event-desc">Fires when cursor enters/leaves element boundary (no bubbling).</div>
+                            </div>
+                        </div>
+                        <div class="demo-area" id="demoHoverArea" style="cursor: pointer;">
+                            <div style="font-weight: 600; color: #a78bfa;">Hover Cursor Here</div>
+                            <div class="output-badge">Hover over container</div>
+                        </div>
+                        <div class="code-container">
+                            <div class="code-header">
+                                <span>JavaScript Example</span>
+                                <button class="copy-btn">Copy</button>
+                            </div>
+                            <pre><code><span class="kw">element</span>.<span class="fn">addEventListener</span>(<span class="str">"mouseenter"</span>, <span class="kw">function</span>() {
+    <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"status"</span>).<span class="fn">textContent</span> = <span class="str">"Mouse entered!"</span>;
+});
+<span class="kw">element</span>.<span class="fn">addEventListener</span>(<span class="str">"mouseleave"</span>, <span class="kw">function</span>() {
+    <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"status"</span>).<span class="fn">textContent</span> = <span class="str">"Mouse left!"</span>;
+});</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- mouseover & mouseout -->
+                    <div class="event-card">
+                        <div class="card-header">
+                            <div>
+                                <div class="event-name">mouseover / mouseout</div>
+                                <div class="event-desc">Fires when hovering over an element OR its children (bubbles).</div>
+                            </div>
+                        </div>
+                        <div class="demo-area" id="demoOverOutArea">
+                            <button id="myButton" class="demo-btn" style="background:#334155;">Hover over me</button>
+                            <div class="output-badge" id="onmouseover">Hey I am Kubra</div>
+                        </div>
+                        <div class="code-container">
+                            <div class="code-header">
+                                <span>JavaScript Example</span>
+                                <button class="copy-btn">Copy</button>
+                            </div>
+                            <pre><code><span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"myButton"</span>).<span class="fn">addEventListener</span>(<span class="str">"mouseover"</span>, <span class="kw">function</span>() {
+    <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"onmouseover"</span>).<span class="fn">textContent</span> = <span class="str">"Mouse is over the button!"</span>;
+}); 
+<span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"myButton"</span>).<span class="fn">addEventListener</span>(<span class="str">"mouseout"</span>, <span class="kw">function</span>() {
+    <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"onmouseover"</span>).<span class="fn">textContent</span> = <span class="str">"Mouse is out of the button!"</span>;
+});</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- mousemove -->
+                    <div class="event-card">
+                        <div class="card-header">
+                            <div>
+                                <div class="event-name">mousemove</div>
+                                <div class="event-desc">Fires continuously as the mouse moves over an element.</div>
+                            </div>
+                        </div>
+                        <div class="demo-area" id="demoMouseMoveArea" style="cursor: crosshair;">
+                            <div style="font-weight: 500; font-size:0.85rem; color:#94a3b8;">Move mouse cursor in this box</div>
+                            <div class="output-badge">X: 0px, Y: 0px</div>
+                        </div>
+                        <div class="code-container">
+                            <div class="code-header">
+                                <span>JavaScript Example</span>
+                                <button class="copy-btn">Copy</button>
+                            </div>
+                            <pre><code><span class="kw">element</span>.<span class="fn">addEventListener</span>(<span class="str">"mousemove"</span>, <span class="kw">function</span>(<span class="fn">e</span>) {
+    <span class="kw">console</span>.<span class="fn">log</span>(<span class="str">`X: ${e.clientX}, Y: ${e.clientY}`</span>);
+});</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- contextmenu -->
+                    <div class="event-card">
+                        <div class="card-header">
+                            <div>
+                                <div class="event-name">contextmenu</div>
+                                <div class="event-desc">Fires when right-clicking. Can be prevented with e.preventDefault().</div>
+                            </div>
+                        </div>
+                        <div class="demo-area" id="demoContextMenuArea" style="cursor: context-menu;">
+                            <div style="font-weight:600; color:#f43f5e;">Right-Click Inside Box</div>
+                            <div class="output-badge">Right click to trigger custom handler</div>
+                        </div>
+                        <div class="code-container">
+                            <div class="code-header">
+                                <span>JavaScript Example</span>
+                                <button class="copy-btn">Copy</button>
+                            </div>
+                            <pre><code><span class="kw">element</span>.<span class="fn">addEventListener</span>(<span class="str">"contextmenu"</span>, <span class="kw">function</span>(<span class="fn">e</span>) {
+    <span class="fn">e</span>.<span class="fn">preventDefault</span>(); <span class="cm">// Prevents default context menu</span>
+    <span class="kw">console</span>.<span class="fn">log</span>(<span class="str">"Custom context menu action"</span>);
+});</code></pre>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+
+            <!-- ========================================== -->
+            <!-- SECTION 2: KEYBOARD EVENTS -->
+            <!-- ========================================== -->
+            <section class="event-section" data-category="keyboard">
+                <h2 class="section-title">⌨️ Keyboard Events</h2>
+
+                <div class="cards-grid">
+
+                    <!-- keydown & keyup -->
+                    <div class="event-card">
+                        <div class="card-header">
+                            <div>
+                                <div class="event-name">keydown / keyup</div>
+                                <div class="event-desc">Fires when a key is pressed down or released (must be on focusable element).</div>
+                            </div>
+                        </div>
+                        <div class="demo-area" id="demoKeydownBox">
+                            <input type="text" id="demoKeydownInput" class="demo-input" placeholder="Click here and press any key...">
+                            <div class="output-badge" id="onkeydown">Press key inside input...</div>
+                        </div>
+                        <div class="code-container">
+                            <div class="code-header">
+                                <span>JavaScript Example</span>
+                                <button class="copy-btn">Copy</button>
+                            </div>
+                            <pre><code><span class="cm">// Note: Keyboard events require focusable elements (like &lt;input&gt; or window)</span>
+<span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"myInput"</span>).<span class="fn">addEventListener</span>(<span class="str">"keydown"</span>, <span class="kw">function</span>(<span class="fn">e</span>) {
+    <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"output"</span>).<span class="fn">textContent</span> = <span class="str">`Key pressed: ${e.key}`</span>;
+});
+
+<span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"myInput"</span>).<span class="fn">addEventListener</span>(<span class="str">"keyup"</span>, <span class="kw">function</span>(<span class="fn">e</span>) {
+    <span class="kw">console</span>.<span class="fn">log</span>(<span class="str">`Key released: ${e.key}`</span>);
+});</code></pre>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+
+            <!-- ========================================== -->
+            <!-- SECTION 3: FORM & INPUT EVENTS -->
+            <!-- ========================================== -->
+            <section class="event-section" data-category="form">
+                <h2 class="section-title">📝 Form & Input Events</h2>
+
+                <div class="cards-grid">
+
+                    <!-- input Event -->
+                    <div class="event-card">
+                        <div class="card-header">
+                            <div>
+                                <div class="event-name">input</div>
+                                <div class="event-desc">Fires immediately whenever value changes in an &lt;input&gt; or &lt;textarea&gt;.</div>
+                            </div>
+                        </div>
+                        <div class="demo-area" id="demoInputBox">
+                            <input type="text" id="demoInputLive" class="demo-input" placeholder="Type something live...">
+                            <div class="output-badge" id="myParagraph">Live text output target</div>
+                        </div>
+                        <div class="code-container">
+                            <div class="code-header">
+                                <span>JavaScript Example</span>
+                                <button class="copy-btn">Copy</button>
+                            </div>
+                            <pre><code><span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"myInput"</span>).<span class="fn">addEventListener</span>(<span class="str">"input"</span>, <span class="kw">function</span>(<span class="fn">e</span>) {
+    <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"myParagraph"</span>).<span class="fn">textContent</span> = <span class="fn">e</span>.<span class="fn">target</span>.<span class="fn">value</span>;
+    <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"myParagraph"</span>).<span class="fn">style</span>.fontSize = <span class="str">"24px"</span>;
+});</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- change Event -->
+                    <div class="event-card">
+                        <div class="card-header">
+                            <div>
+                                <div class="event-name">change</div>
+                                <div class="event-desc">Fires when element value is committed (e.g. selection changed or focus lost).</div>
+                            </div>
+                        </div>
+                        <div class="demo-area" id="demoChangeBox">
+                            <select id="demoSelectChange" class="demo-input" style="cursor:pointer;">
+                                <option value="">-- Choose an option --</option>
+                                <option value="Option 1 (JavaScript)">JavaScript</option>
+                                <option value="Option 2 (Python)">Python</option>
+                                <option value="Option 3 (TypeScript)">TypeScript</option>
+                            </select>
+                            <div class="output-badge">Select an option</div>
+                        </div>
+                        <div class="code-container">
+                            <div class="code-header">
+                                <span>JavaScript Example</span>
+                                <button class="copy-btn">Copy</button>
+                            </div>
+                            <pre><code><span class="kw">selectElement</span>.<span class="fn">addEventListener</span>(<span class="str">"change"</span>, <span class="kw">function</span>(<span class="fn">e</span>) {
+    <span class="kw">console</span>.<span class="fn">log</span>(<span class="str">"Selected value:"</span>, <span class="fn">e</span>.<span class="fn">target</span>.<span class="fn">value</span>);
+});</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- focus & blur -->
+                    <div class="event-card">
+                        <div class="card-header">
+                            <div>
+                                <div class="event-name">focus / blur</div>
+                                <div class="event-desc">focus fires when element gains active focus; blur fires when focus is lost.</div>
+                            </div>
+                        </div>
+                        <div class="demo-area" id="demoFocusBlurBox">
+                            <input type="text" id="demoFocusBlurInput" class="demo-input" placeholder="Click to Focus, click away to Blur">
+                            <div class="output-badge">Focus status indicator</div>
+                        </div>
+                        <div class="code-container">
+                            <div class="code-header">
+                                <span>JavaScript Example</span>
+                                <button class="copy-btn">Copy</button>
+                            </div>
+                            <pre><code><span class="kw">inputElement</span>.<span class="fn">addEventListener</span>(<span class="str">"focus"</span>, <span class="kw">function</span>() {
+    <span class="kw">console</span>.<span class="fn">log</span>(<span class="str">"Input has focus"</span>);
+});
+<span class="kw">inputElement</span>.<span class="fn">addEventListener</span>(<span class="str">"blur"</span>, <span class="kw">function</span>() {
+    <span class="kw">console</span>.<span class="fn">log</span>(<span class="str">"Input lost focus"</span>);
+});</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- submit & reset -->
+                    <div class="event-card">
+                        <div class="card-header">
+                            <div>
+                                <div class="event-name">submit / reset</div>
+                                <div class="event-desc">Fires when a &lt;form&gt; is submitted or reset. Use e.preventDefault() to handle via JS.</div>
+                            </div>
+                        </div>
+                        <div class="demo-area" id="demoFormBox">
+                            <form id="demoForm" style="display:flex; gap:6px; width:100%;">
+                                <input type="text" class="demo-input" placeholder="Enter text..." required style="flex:1;">
+                                <button type="submit" class="demo-btn" style="padding:6px 12px;">Submit</button>
+                                <button type="reset" class="demo-btn" style="background:#475569; padding:6px 12px;">Reset</button>
+                            </form>
+                            <div class="output-badge">Form action log</div>
+                        </div>
+                        <div class="code-container">
+                            <div class="code-header">
+                                <span>JavaScript Example</span>
+                                <button class="copy-btn">Copy</button>
+                            </div>
+                            <pre><code><span class="kw">formElement</span>.<span class="fn">addEventListener</span>(<span class="str">"submit"</span>, <span class="kw">function</span>(<span class="fn">e</span>) {
+    <span class="fn">e</span>.<span class="fn">preventDefault</span>(); <span class="cm">// Prevent page refresh</span>
+    <span class="kw">console</span>.<span class="fn">log</span>(<span class="str">"Form submitted!"</span>);
+});</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- select (Text highlighted) -->
+                    <div class="event-card">
+                        <div class="card-header">
+                            <div>
+                                <div class="event-name">select</div>
+                                <div class="event-desc">Fires when user highlights/selects text inside an input field.</div>
+                            </div>
+                        </div>
+                        <div class="demo-area" id="demoSelectTextBox">
+                            <input type="text" id="demoSelectTextInput" class="demo-input" value="Highlight any part of this text to test">
+                            <div class="output-badge">Select text inside input</div>
+                        </div>
+                        <div class="code-container">
+                            <div class="code-header">
+                                <span>JavaScript Example</span>
+                                <button class="copy-btn">Copy</button>
+                            </div>
+                            <pre><code><span class="kw">inputElement</span>.<span class="fn">addEventListener</span>(<span class="str">"select"</span>, <span class="kw">function</span>(<span class="fn">e</span>) {
+    <span class="kw">console</span>.<span class="fn">log</span>(<span class="str">"Text highlighted by user"</span>);
+});</code></pre>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+
+            <!-- ========================================== -->
+            <!-- SECTION 4: CLIPBOARD & SELECTION EVENTS -->
+            <!-- ========================================== -->
+            <section class="event-section" data-category="clipboard">
+                <h2 class="section-title">📋 Clipboard Events</h2>
+
+                <div class="cards-grid">
+
+                    <!-- copy, cut, paste -->
+                    <div class="event-card">
+                        <div class="card-header">
+                            <div>
+                                <div class="event-name">copy / cut / paste</div>
+                                <div class="event-desc">Fires when content is copied, cut, or pasted into an element.</div>
+                            </div>
+                        </div>
+                        <div class="demo-area" id="demoClipboardBox">
+                            <input type="text" id="demoClipboardInput" class="demo-input" value="Try copying, cutting, or pasting text here!">
+                            <div class="output-badge">Clipboard event detector</div>
+                        </div>
+                        <div class="code-container">
+                            <div class="code-header">
+                                <span>JavaScript Example</span>
+                                <button class="copy-btn">Copy</button>
+                            </div>
+                            <pre><code><span class="kw">element</span>.<span class="fn">addEventListener</span>(<span class="str">"copy"</span>, <span class="kw">function</span>() {
+    <span class="kw">console</span>.<span class="fn">log</span>(<span class="str">"Content copied!"</span>);
+});
+<span class="kw">element</span>.<span class="fn">addEventListener</span>(<span class="str">"paste"</span>, <span class="kw">function</span>(<span class="fn">e</span>) {
+    <span class="kw">let</span> pastedText = <span class="fn">e</span>.clipboardData.<span class="fn">getData</span>(<span class="str">"text"</span>);
+    <span class="kw">console</span>.<span class="fn">log</span>(<span class="str">"Pasted:"</span>, pastedText);
+});</code></pre>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+
+            <!-- ========================================== -->
+            <!-- SECTION 5: DRAG & DROP EVENTS -->
+            <!-- ========================================== -->
+            <section class="event-section" data-category="drag">
+                <h2 class="section-title">📦 Drag & Drop Events</h2>
+
+                <div class="cards-grid">
+
+                    <!-- dragstart, dragover, drop -->
+                    <div class="event-card">
+                        <div class="card-header">
+                            <div>
+                                <div class="event-name">dragstart / dragover / drop</div>
+                                <div class="event-desc">Native HTML5 drag and drop events between elements.</div>
+                            </div>
+                        </div>
+                        <div class="demo-area" id="demoDragBox" style="gap:14px;">
+                            <div id="demoDragItem" class="drag-box" draggable="true">Drag Me</div>
+                            <div id="demoDropZone" class="drop-target">Drop Item Here</div>
+                            <div class="output-badge">Drag box into target area</div>
+                        </div>
+                        <div class="code-container">
+                            <div class="code-header">
+                                <span>JavaScript Example</span>
+                                <button class="copy-btn">Copy</button>
+                            </div>
+                            <pre><code><span class="cm">// Make element draggable in HTML: &lt;div draggable="true"&gt;</span>
+<span class="kw">dragItem</span>.<span class="fn">addEventListener</span>(<span class="str">"dragstart"</span>, <span class="kw">function</span>(<span class="fn">e</span>) {
+    <span class="fn">e</span>.dataTransfer.<span class="fn">setData</span>(<span class="str">"text/plain"</span>, <span class="str">"Sample Data"</span>);
+});
+
+<span class="kw">dropTarget</span>.<span class="fn">addEventListener</span>(<span class="str">"dragover"</span>, <span class="kw">function</span>(<span class="fn">e</span>) {
+    <span class="fn">e</span>.<span class="fn">preventDefault</span>(); <span class="cm">// Required to allow dropping</span>
+});
+
+<span class="kw">dropTarget</span>.<span class="fn">addEventListener</span>(<span class="str">"drop"</span>, <span class="kw">function</span>(<span class="fn">e</span>) {
+    <span class="fn">e</span>.<span class="fn">preventDefault</span>();
+    <span class="kw">let</span> data = <span class="fn">e</span>.dataTransfer.<span class="fn">getData</span>(<span class="str">"text/plain"</span>);
+});</code></pre>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+
+            <!-- ========================================== -->
+            <!-- SECTION 6: WINDOW & PAGE LOAD EVENTS -->
+            <!-- ========================================== -->
+            <section class="event-section" data-category="window">
+                <h2 class="section-title">🖥️ Window & Page Load Events</h2>
+
+                <div class="cards-grid">
+
+                    <!-- DOMContentLoaded & load -->
+                    <div class="event-card">
+                        <div class="card-header">
+                            <div>
+                                <div class="event-name">DOMContentLoaded & load</div>
+                                <div class="event-desc">DOMContentLoaded fires when DOM HTML is ready. load fires when images & stylesheets finish.</div>
+                            </div>
+                        </div>
+                        <div class="demo-area" id="demoImageBox">
+                            <img id="demoImageTarget" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=150&auto=format&fit=crop&q=80" alt="Code demo" style="width:70px; height:45px; border-radius:6px; object-fit:cover;">
+                            <div class="output-badge">Resource load status</div>
+                        </div>
+                        <div class="code-container">
+                            <div class="code-header">
+                                <span>JavaScript Example</span>
+                                <button class="copy-btn">Copy</button>
+                            </div>
+                            <pre><code><span class="cm">// Note: 'load' fires on window or resources (&lt;img&gt;), NOT standard buttons</span>
+<span class="kw">window</span>.<span class="fn">addEventListener</span>(<span class="str">"DOMContentLoaded"</span>, <span class="kw">function</span>() {
+    <span class="kw">console</span>.<span class="fn">log</span>(<span class="str">"DOM tree built!"</span>);
+});
+
+<span class="kw">window</span>.<span class="fn">addEventListener</span>(<span class="str">"load"</span>, <span class="kw">function</span>() {
+    <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"onload"</span>).<span class="fn">textContent</span> = <span class="str">"Page fully loaded!"</span>;
+});</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- resize Event -->
+                    <div class="event-card">
+                        <div class="card-header">
+                            <div>
+                                <div class="event-name">resize</div>
+                                <div class="event-desc">Fires on window when browser window dimensions change.</div>
+                            </div>
+                        </div>
+                        <div class="demo-area" id="demoResizeBox">
+                            <div style="font-weight:600; color:#38bdf8;">Resize Browser Window</div>
+                            <div class="output-badge" id="windowSizeDisplay">Resize window to see viewport width x height</div>
+                        </div>
+                        <div class="code-container">
+                            <div class="code-header">
+                                <span>JavaScript Example</span>
+                                <button class="copy-btn">Copy</button>
+                            </div>
+                            <pre><code><span class="kw">window</span>.<span class="fn">addEventListener</span>(<span class="str">"resize"</span>, <span class="kw">function</span>() {
+    <span class="kw">console</span>.<span class="fn">log</span>(<span class="str">`Width: ${window.innerWidth}, Height: ${window.innerHeight}`</span>);
+});</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- scroll Event -->
+                    <div class="event-card">
+                        <div class="card-header">
+                            <div>
+                                <div class="event-name">scroll</div>
+                                <div class="event-desc">Fires when an element or the window is scrolled.</div>
+                            </div>
+                        </div>
+                        <div class="demo-area" id="demoScrollContainer">
+                            <div id="demoScrollBox" style="height:60px; width:100%; overflow-y:scroll; background:#1e293b; border-radius:6px; padding:8px; font-size:0.8rem; text-align:left; color:#94a3b8;">
+                                Line 1: Scroll inside this box...<br>
+                                Line 2: Keeping scrolling down...<br>
+                                Line 3: Event triggers on scroll.<br>
+                                Line 4: Scroll distance increases.<br>
+                                Line 5: Bottom reached!
+                            </div>
+                            <div class="output-badge">Scroll inside box</div>
+                        </div>
+                        <div class="code-container">
+                            <div class="code-header">
+                                <span>JavaScript Example</span>
+                                <button class="copy-btn">Copy</button>
+                            </div>
+                            <pre><code><span class="kw">element</span>.<span class="fn">addEventListener</span>(<span class="str">"scroll"</span>, <span class="kw">function</span>(<span class="fn">e</span>) {
+    <span class="kw">console</span>.<span class="fn">log</span>(<span class="str">"Scrolled position:"</span>, <span class="kw">element</span>.scrollTop);
+});</code></pre>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+
+
+        <!-- Right Column: Live Event Logger Feed -->
+        <aside class="logger-panel">
+            <div class="logger-header">
+                <div class="logger-title">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                    <span>Live Event Feed</span>
+                </div>
+                <button id="clearLogsBtn" class="clear-logs-btn">Clear Logs</button>
+            </div>
+
+            <div id="loggerFeed" class="logger-feed">
+                <!-- Log entries dynamically prepended here -->
+                <div style="color:#64748b; text-align:center; padding:30px 10px;">
+                    ⚡ Interactive Logger Ready.<br>Trigger any event on the left to inspect event payload.
+                </div>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- JavaScript Logic File -->
+    <script src="js/events.js"></script>
+</body>
+</html>
