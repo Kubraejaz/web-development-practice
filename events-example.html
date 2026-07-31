@@ -9,36 +9,71 @@
 
     <h1>JavaScript Events Examples</h1>
 
-    <!-- 1. Click Event -->
-    <h3>1. Click Event</h3>
+    <!-- 1. Click Event with 200-Character Paragraph -->
+    <h3>1. Click Event (200 Character Paragraph)</h3>
+    <p id="sampleParagraph" style="border: 1px dashed gray; padding: 10px; cursor: pointer;">
+        JavaScript events allow web pages to be interactive and respond to user actions like clicking, typing, hovering, and scrolling. Event listeners make web applications dynamic, engaging, and alive!
+    </p>
+    <p id="paragraphDetails">Click the paragraph above to change font and inspect character count.</p>
+
+    <hr>
+
+    <!-- 2. Advanced Input Text & Character Inspector -->
+    <h3>2. Input Field Character & Selection Inspector</h3>
+    <p>Type text below to inspect length, spaces, new lines, uppercase transform, and selected characters:</p>
+    <textarea id="textAnalyzer" rows="5" cols="60" placeholder="Type or paste multi-line text here..."></textarea>
+    
+    <div style="margin-top: 10px;">
+        <button id="btnUppercase">Transform to UPPERCASE</button>
+        <button id="btnLowercase">Transform to lowercase</button>
+    </div>
+
+    <div style="margin-top: 10px; background: #f0f0f0; padding: 10px; border-radius: 5px;">
+        <p><strong>Total Character Count:</strong> <span id="charCount">0</span></p>
+        <p><strong>White Space Count:</strong> <span id="spaceCount">0</span></p>
+        <p><strong>New Line Count:</strong> <span id="newLineCount">0</span></p>
+        <p><strong>Selected Text:</strong> <span id="selectedText">None</span></p>
+    </div>
+
+    <div style="margin-top: 10px;">
+        <label for="indexInput">Check character at index position: </label>
+        <input type="number" id="indexInput" min="0" placeholder="e.g. 5" style="width: 70px;">
+        <button id="btnCheckIndex">Check Index</button>
+        <p id="indexResult">Enter an index number to check if it exists.</p>
+    </div>
+
+    <hr>
+
+    <!-- 3. Standard Click Button -->
+    <h3>3. Button Click Event</h3>
     <button id="btnClick">Click Me</button>
     <p id="clickResult">Result will show here</p>
 
     <hr>
 
-    <!-- 2. Double Click Event -->
-    <h3>2. Double Click Event</h3>
+    <!-- 4. Double Click Event -->
+    <h3>4. Double Click Event</h3>
     <button id="btnDblClick">Double Click Me</button>
     <p id="dblClickResult">Result will show here</p>
 
     <hr>
 
-    <!-- 3. Mouseover and Mouseout Events -->
-    <h3>3. Mouseover and Mouseout Events</h3>
+    <!-- 5. Mouseover and Mouseout Events -->
+    <h3>5. Mouseover and Mouseout Events</h3>
     <button id="btnHover">Hover Over Me</button>
     <p id="hoverResult">Result will show here</p>
 
     <hr>
 
-    <!-- 4. Mousedown and Mouseup Events -->
-    <h3>4. Mousedown and Mouseup Events</h3>
+    <!-- 6. Mousedown and Mouseup Events -->
+    <h3>6. Mousedown and Mouseup Events</h3>
     <button id="btnPress">Press & Hold Me</button>
     <p id="pressResult">Result will show here</p>
 
     <hr>
 
-    <!-- 5. Mousemove Event -->
-    <h3>5. Mousemove Event</h3>
+    <!-- 7. Mousemove Event -->
+    <h3>7. Mousemove Event</h3>
     <div id="moveBox" style="width: 200px; height: 100px; border: 1px solid black; padding: 10px;">
         Move mouse inside this box
     </div>
@@ -46,22 +81,22 @@
 
     <hr>
 
-    <!-- 6. Keydown and Keyup Events -->
-    <h3>6. Keydown and Keyup Events</h3>
+    <!-- 8. Keydown and Keyup Events -->
+    <h3>8. Keydown and Keyup Events</h3>
     <input type="text" id="inputKey" placeholder="Type inside this box...">
     <p id="keyResult">Key pressed will show here</p>
 
     <hr>
 
-    <!-- 7. Input Event -->
-    <h3>7. Input Event (Live Typing)</h3>
+    <!-- 9. Input Event (Live Typing) -->
+    <h3>9. Input Event (Live Typing)</h3>
     <input type="text" id="inputLive" placeholder="Type something live...">
     <p id="inputResult">Typed text will show here</p>
 
     <hr>
 
-    <!-- 8. Change Event -->
-    <h3>8. Change Event</h3>
+    <!-- 10. Change Event -->
+    <h3>10. Change Event</h3>
     <select id="selectTopic">
         <option value="">Select a subject</option>
         <option value="HTML">HTML</option>
@@ -72,15 +107,15 @@
 
     <hr>
 
-    <!-- 9. Focus and Blur Events -->
-    <h3>9. Focus and Blur Events</h3>
+    <!-- 11. Focus and Blur Events -->
+    <h3>11. Focus and Blur Events</h3>
     <input type="text" id="inputFocus" placeholder="Click inside then click outside...">
     <p id="focusResult">Status will show here</p>
 
     <hr>
 
-    <!-- 10. Form Submit and Reset Events -->
-    <h3>10. Form Submit and Reset Events</h3>
+    <!-- 12. Form Submit and Reset Events -->
+    <h3>12. Form Submit and Reset Events</h3>
     <form id="myForm">
         <input type="text" id="userName" placeholder="Enter your name" required>
         <button type="submit">Submit</button>
@@ -90,39 +125,118 @@
 
     <hr>
 
-    <!-- 11. Copy and Paste Events -->
-    <h3>11. Copy and Paste Events</h3>
+    <!-- 13. Copy and Paste Events -->
+    <h3>13. Copy and Paste Events</h3>
     <input type="text" id="clipboardInput" value="Copy or paste text here">
     <p id="clipboardResult">Clipboard action will show here</p>
 
     <hr>
 
-    <!-- 12. Window Load Event -->
-    <h3>12. Window Load Event</h3>
+    <!-- 14. Window Load Event -->
+    <h3>14. Window Load Event</h3>
     <p id="loadResult">Loading page...</p>
 
     <hr>
 
-    <!-- 13. Window Resize Event -->
-    <h3>13. Window Resize Event</h3>
+    <!-- 15. Window Resize Event -->
+    <h3>15. Window Resize Event</h3>
     <p id="resizeResult">Resize browser window to see dimensions</p>
 
 
     <!-- JavaScript Code -->
     <script>
-        // 1. Click Event
+        // 1. Paragraph Click Event (200 Characters)
+        document.getElementById("sampleParagraph").addEventListener("click", function() {
+            var paragraphText = this.textContent.trim();
+            var totalLength = paragraphText.length;
+
+            // Change Font, Size, and Color
+            this.style.fontFamily = "Georgia, serif";
+            this.style.fontSize = "18px";
+            this.style.fontWeight = "bold";
+            this.style.color = "darkpurple";
+            this.style.backgroundColor = "#e0e7ff";
+
+            document.getElementById("paragraphDetails").textContent = 
+                "Paragraph clicked! Character Count: " + totalLength + " characters. Font style and size updated.";
+        });
+
+        // 2. Input Text & Character Inspector Events
+        var textAnalyzer = document.getElementById("textAnalyzer");
+
+        // Live input character analyzer
+        textAnalyzer.addEventListener("input", function() {
+            var val = this.value;
+
+            // Character count
+            document.getElementById("charCount").textContent = val.length;
+
+            // White spaces count
+            var spaces = (val.match(/ /g) || []).length;
+            document.getElementById("spaceCount").textContent = spaces;
+
+            // New lines count
+            var newLines = (val.match(/\n/g) || []).length;
+            document.getElementById("newLineCount").textContent = newLines;
+        });
+
+        // Text Selection Event (Tells which characters are selected)
+        textAnalyzer.addEventListener("select", function() {
+            var start = this.selectionStart;
+            var end = this.selectionEnd;
+            var selected = this.value.substring(start, end);
+
+            document.getElementById("selectedText").textContent = 
+                '"' + selected + '" (From index ' + start + ' to ' + end + ')';
+        });
+
+        // Transform to Uppercase Button
+        document.getElementById("btnUppercase").addEventListener("click", function() {
+            textAnalyzer.value = textAnalyzer.value.toUpperCase();
+            // Trigger input event to update counts
+            textAnalyzer.dispatchEvent(new Event("input"));
+        });
+
+        // Transform to Lowercase Button
+        document.getElementById("btnLowercase").addEventListener("click", function() {
+            textAnalyzer.value = textAnalyzer.value.toLowerCase();
+            textAnalyzer.dispatchEvent(new Event("input"));
+        });
+
+        // Check Index Button (Check if character index exists)
+        document.getElementById("btnCheckIndex").addEventListener("click", function() {
+            var idx = parseInt(document.getElementById("indexInput").value);
+            var text = textAnalyzer.value;
+
+            if (isNaN(idx)) {
+                document.getElementById("indexResult").textContent = "Please enter a valid number!";
+            } else if (idx >= 0 && idx < text.length) {
+                var charAtIndex = text.charAt(idx);
+                // Handle special characters display
+                if (charAtIndex === " ") charAtIndex = "[Space]";
+                if (charAtIndex === "\n") charAtIndex = "[New Line]";
+
+                document.getElementById("indexResult").textContent = 
+                    "Index " + idx + " EXISTS! Character is: '" + charAtIndex + "'";
+            } else {
+                document.getElementById("indexResult").textContent = 
+                    "Index " + idx + " DOES NOT EXIST! (Text length is " + text.length + ")";
+            }
+        });
+
+        // 3. Click Event
         document.getElementById("btnClick").addEventListener("click", function() {
             document.getElementById("clickResult").textContent = "Button was clicked!";
             document.getElementById("clickResult").style.color = "blue";
         });
 
-        // 2. Double Click Event
+        // 4. Double Click Event
         document.getElementById("btnDblClick").addEventListener("dblclick", function() {
             document.getElementById("dblClickResult").textContent = "Button was double clicked!";
             document.getElementById("dblClickResult").style.color = "green";
         });
 
-        // 3. Mouseover and Mouseout Events
+        // 5. Mouseover and Mouseout Events
         document.getElementById("btnHover").addEventListener("mouseover", function() {
             document.getElementById("hoverResult").textContent = "Mouse is over the button!";
         });
@@ -131,7 +245,7 @@
             document.getElementById("hoverResult").textContent = "Mouse left the button!";
         });
 
-        // 4. Mousedown and Mouseup Events
+        // 6. Mousedown and Mouseup Events
         document.getElementById("btnPress").addEventListener("mousedown", function() {
             document.getElementById("pressResult").textContent = "Mouse button pressed down!";
         });
@@ -140,12 +254,12 @@
             document.getElementById("pressResult").textContent = "Mouse button released!";
         });
 
-        // 5. Mousemove Event
+        // 7. Mousemove Event
         document.getElementById("moveBox").addEventListener("mousemove", function(event) {
             document.getElementById("moveResult").textContent = "X: " + event.clientX + ", Y: " + event.clientY;
         });
 
-        // 6. Keydown and Keyup Events
+        // 8. Keydown and Keyup Events
         document.getElementById("inputKey").addEventListener("keydown", function(event) {
             document.getElementById("keyResult").textContent = "Key pressed: " + event.key;
         });
@@ -154,17 +268,17 @@
             document.getElementById("keyResult").textContent = "Key released: " + event.key;
         });
 
-        // 7. Input Event
+        // 9. Input Event
         document.getElementById("inputLive").addEventListener("input", function(event) {
             document.getElementById("inputResult").textContent = "You typed: " + event.target.value;
         });
 
-        // 8. Change Event
+        // 10. Change Event
         document.getElementById("selectTopic").addEventListener("change", function(event) {
             document.getElementById("changeResult").textContent = "You selected: " + event.target.value;
         });
 
-        // 9. Focus and Blur Events
+        // 11. Focus and Blur Events
         document.getElementById("inputFocus").addEventListener("focus", function() {
             document.getElementById("focusResult").textContent = "Input field is focused!";
         });
@@ -173,7 +287,7 @@
             document.getElementById("focusResult").textContent = "Input field lost focus!";
         });
 
-        // 10. Form Submit and Reset Events
+        // 12. Form Submit and Reset Events
         document.getElementById("myForm").addEventListener("submit", function(event) {
             event.preventDefault(); // Prevents page reload
             var name = document.getElementById("userName").value;
@@ -184,7 +298,7 @@
             document.getElementById("formResult").textContent = "Form reset!";
         });
 
-        // 11. Copy and Paste Events
+        // 13. Copy and Paste Events
         document.getElementById("clipboardInput").addEventListener("copy", function() {
             document.getElementById("clipboardResult").textContent = "Text copied!";
         });
@@ -193,12 +307,12 @@
             document.getElementById("clipboardResult").textContent = "Text pasted!";
         });
 
-        // 12. Window Load Event
+        // 14. Window Load Event
         window.addEventListener("load", function() {
             document.getElementById("loadResult").textContent = "Page fully loaded!";
         });
 
-        // 13. Window Resize Event
+        // 15. Window Resize Event
         window.addEventListener("resize", function() {
             document.getElementById("resizeResult").textContent = "Window Size: " + window.innerWidth + " x " + window.innerHeight;
         });
