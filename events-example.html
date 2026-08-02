@@ -3,81 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript Event Examples</title>
+    <title>JavaScript Event Examples & Tasks</title>
 </head>
-<body>
+<body style="font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; max-width: 800px; margin: auto;">
 
-    <h1>JavaScript Events Examples</h1>
+    <h1>JavaScript Events Examples & Assignment Tasks</h1>
 
-    <!-- 1. Click Event with 200-Character Paragraph -->
-    <h3>1. Click Event (200 Character Paragraph)</h3>
-    <p id="sampleParagraph" style="border: 1px dashed gray; padding: 10px; cursor: pointer;">
-        JavaScript events allow web pages to be interactive and respond to user actions like clicking, typing, hovering, and scrolling. Event listeners make web applications dynamic, engaging, and alive!
-    </p>
-    <p id="paragraphDetails">Click the paragraph above to change font and inspect character count.</p>
+    <!-- ======================================================= -->
+    <!-- TASK 1 -->
+    <!-- ======================================================= -->
+    <div style="border: 2px solid #2563eb; padding: 16px; border-radius: 8px; margin-bottom: 24px; background: #eff6ff;">
+        <h2 style="color: #1e40af; margin-top: 0;">Task 1: Click Paragraph Character Index Detector</h2>
+        <p>Click anywhere on the paragraph below to get the exact index number of the clicked character:</p>
+        
+        <p id="task1Paragraph" style="border: 1px solid #93c5fd; padding: 14px; background: #ffffff; cursor: pointer; border-radius: 6px; font-size: 16px;">
+            JavaScript events allow web pages to be interactive and respond to user actions like clicking, typing, hovering, and scrolling. Event listeners make web applications dynamic, engaging, and alive!
+        </p>
 
-    <hr>
+        <p id="task1Result" style="font-size: 18px; font-weight: bold; color: #1e40af; margin-bottom: 0;">
+            👉 Click any character in the paragraph above to see its index number!
+        </p>
+    </div>
 
-    <!-- 2. Advanced Input Text & Character Inspector -->
-    <h3>2. Input Field Character & Selection Inspector</h3>
-    <p>Type text below to inspect length, spaces, new lines, uppercase transform, and selected characters:</p>
-    <textarea id="textAnalyzer" rows="5" cols="60" placeholder="Type or paste multi-line text here..."></textarea>
+    <!-- ======================================================= -->
+    <!-- TASK 2 -->
+    <!-- ======================================================= -->
+    <div style="border: 2px solid #16a34a; padding: 16px; border-radius: 8px; margin-bottom: 24px; background: #f0fdf4;">
+        <h2 style="color: #166534; margin-top: 0;">Task 2: Search Word Index & Uppercase Display</h2>
+        <p>Type a word in the search input below to find its starting index in the paragraph:</p>
+
+        <label for="task2Search"><strong>Search Word: </strong></label>
+        <input type="text" id="task2Search" placeholder="Type a word (e.g. interactive, clicking)..." style="padding: 8px; width: 320px; font-size: 15px; border: 1px solid #86efac; border-radius: 4px;">
+
+        <p id="task2Paragraph" style="border: 1px solid #86efac; padding: 14px; margin-top: 12px; background: #ffffff; border-radius: 6px; font-size: 16px;">
+            JavaScript events allow web pages to be interactive and respond to user actions like clicking, typing, hovering, and scrolling.
+        </p>
+
+        <div style="background: #ffffff; padding: 12px; border-radius: 6px; border: 1px solid #bbf7d0;">
+            <p id="task2IndexResult" style="margin: 4px 0; font-size: 16px; color: #166534;">
+                <strong>Starting Index:</strong> Type a word above...
+            </p>
+            <p id="task2UppercaseResult" style="margin: 4px 0; font-size: 18px; font-weight: bold; color: #15803d;">
+                <strong>Word in UPPERCASE:</strong> -
+            </p>
+        </div>
+    </div>
+
+    <hr style="margin: 30px 0;">
+
+    <h2>Additional DOM Event Examples</h2>
+
+    <!-- 3. Advanced Input Text & Character Inspector -->
+    <h3>3. Input Field Character & Selection Inspector</h3>
+    <textarea id="textAnalyzer" rows="4" cols="60" placeholder="Type or paste multi-line text here..."></textarea>
     
-    <div style="margin-top: 10px;">
+    <div style="margin-top: 8px;">
         <button id="btnUppercase">Transform to UPPERCASE</button>
         <button id="btnLowercase">Transform to lowercase</button>
     </div>
 
-    <div style="margin-top: 10px; background: #f0f0f0; padding: 10px; border-radius: 5px;">
+    <div style="margin-top: 10px; background: #f8fafc; padding: 10px; border-radius: 5px; border: 1px solid #cbd5e1;">
         <p><strong>Total Character Count:</strong> <span id="charCount">0</span></p>
         <p><strong>White Space Count:</strong> <span id="spaceCount">0</span></p>
         <p><strong>New Line Count:</strong> <span id="newLineCount">0</span></p>
         <p><strong>Selected Text:</strong> <span id="selectedText">None</span></p>
     </div>
 
-    <div style="margin-top: 10px;">
-        <label for="indexInput">Check character at index position: </label>
-        <input type="number" id="indexInput" min="0" placeholder="e.g. 5" style="width: 70px;">
-        <button id="btnCheckIndex">Check Index</button>
-        <p id="indexResult">Enter an index number to check if it exists.</p>
-    </div>
-
     <hr>
 
-    <!-- 3. Standard Click Button -->
-    <h3>3. Button Click Event</h3>
+    <!-- 4. Standard Click Button -->
+    <h3>4. Button Click Event</h3>
     <button id="btnClick">Click Me</button>
     <p id="clickResult">Result will show here</p>
 
     <hr>
 
-    <!-- 4. Double Click Event -->
-    <h3>4. Double Click Event</h3>
+    <!-- 5. Double Click Event -->
+    <h3>5. Double Click Event</h3>
     <button id="btnDblClick">Double Click Me</button>
     <p id="dblClickResult">Result will show here</p>
 
     <hr>
 
-    <!-- 5. Mouseover and Mouseout Events -->
-    <h3>5. Mouseover and Mouseout Events</h3>
+    <!-- 6. Mouseover and Mouseout Events -->
+    <h3>6. Mouseover and Mouseout Events</h3>
     <button id="btnHover">Hover Over Me</button>
     <p id="hoverResult">Result will show here</p>
 
     <hr>
 
-    <!-- 6. Mousedown and Mouseup Events -->
-    <h3>6. Mousedown and Mouseup Events</h3>
+    <!-- 7. Mousedown and Mouseup Events -->
+    <h3>7. Mousedown and Mouseup Events</h3>
     <button id="btnPress">Press & Hold Me</button>
     <p id="pressResult">Result will show here</p>
-
-    <hr>
-
-    <!-- 7. Mousemove Event -->
-    <h3>7. Mousemove Event</h3>
-    <div id="moveBox" style="width: 200px; height: 100px; border: 1px solid black; padding: 10px;">
-        Move mouse inside this box
-    </div>
-    <p id="moveResult">X: 0, Y: 0</p>
 
     <hr>
 
@@ -145,98 +163,99 @@
 
     <!-- JavaScript Code -->
     <script>
-        // 1. Paragraph Click Event (200 Characters)
-        document.getElementById("sampleParagraph").addEventListener("click", function() {
-            var paragraphText = this.textContent.trim();
-            var totalLength = paragraphText.length;
+        // =======================================================
+        // TASK 1: Click anywhere on paragraph -> display exact index
+        // =======================================================
+        document.getElementById("task1Paragraph").addEventListener("click", function(event) {
+            var offset = 0;
+            if (document.caretRangeFromPoint) {
+                var range = document.caretRangeFromPoint(event.clientX, event.clientY);
+                if (range) offset = range.startOffset;
+            } else if (document.caretPositionFromPoint) {
+                var pos = document.caretPositionFromPoint(event.clientX, event.clientY);
+                if (pos) offset = pos.offset;
+            }
 
-            // Change Font, Size, and Color
-            this.style.fontFamily = "Georgia, serif";
-            this.style.fontSize = "18px";
-            this.style.fontWeight = "bold";
-            this.style.color = "darkpurple";
-            this.style.backgroundColor = "#e0e7ff";
+            var text = this.textContent;
+            var charClicked = text.charAt(offset);
+            if (charClicked === " ") charClicked = "[Space]";
+            if (charClicked === "\n") charClicked = "[New Line]";
 
-            document.getElementById("paragraphDetails").textContent = 
-                "Paragraph clicked! Character Count: " + totalLength + " characters. Font style and size updated.";
+            document.getElementById("task1Result").innerHTML = 
+                "Clicked Character: <span style='color:#dc2626;'>" + charClicked + "</span> | Exact Index Number: <span style='color:#2563eb;'>" + offset + "</span> (Total Length: " + text.length + ")";
         });
 
-        // 2. Input Text & Character Inspector Events
+        // =======================================================
+        // TASK 2: Input box above paragraph -> starting index & UPPERCASE
+        // =======================================================
+        document.getElementById("task2Search").addEventListener("input", function() {
+            var searchWord = this.value;
+            var paragraphText = document.getElementById("task2Paragraph").textContent;
+            
+            if (searchWord.trim() === "") {
+                document.getElementById("task2IndexResult").innerHTML = "<strong>Starting Index:</strong> Type a word above...";
+                document.getElementById("task2UppercaseResult").innerHTML = "<strong>Word in UPPERCASE:</strong> -";
+                return;
+            }
+
+            // Case-insensitive search for word in paragraph
+            var startIndex = paragraphText.toLowerCase().indexOf(searchWord.toLowerCase());
+
+            if (startIndex !== -1) {
+                document.getElementById("task2IndexResult").innerHTML = 
+                    "<strong>Starting Index of '" + searchWord + "':</strong> <span style='color:#2563eb; font-weight:bold;'>" + startIndex + "</span>";
+                document.getElementById("task2UppercaseResult").innerHTML = 
+                    "<strong>Word in UPPERCASE:</strong> <span style='color:#dc2626; font-size:20px;'>" + searchWord.toUpperCase() + "</span>";
+            } else {
+                document.getElementById("task2IndexResult").innerHTML = 
+                    "<strong>Starting Index:</strong> Word '<span style='color:#dc2626;'>" + searchWord + "</span>' NOT found in paragraph.";
+                document.getElementById("task2UppercaseResult").innerHTML = 
+                    "<strong>Word in UPPERCASE:</strong> -";
+            }
+        });
+
+        // =======================================================
+        // 3. Text Inspector Events
+        // =======================================================
         var textAnalyzer = document.getElementById("textAnalyzer");
 
-        // Live input character analyzer
         textAnalyzer.addEventListener("input", function() {
             var val = this.value;
-
-            // Character count
             document.getElementById("charCount").textContent = val.length;
-
-            // White spaces count
-            var spaces = (val.match(/ /g) || []).length;
-            document.getElementById("spaceCount").textContent = spaces;
-
-            // New lines count
-            var newLines = (val.match(/\n/g) || []).length;
-            document.getElementById("newLineCount").textContent = newLines;
+            document.getElementById("spaceCount").textContent = (val.match(/ /g) || []).length;
+            document.getElementById("newLineCount").textContent = (val.match(/\n/g) || []).length;
         });
 
-        // Text Selection Event (Tells which characters are selected)
         textAnalyzer.addEventListener("select", function() {
             var start = this.selectionStart;
             var end = this.selectionEnd;
             var selected = this.value.substring(start, end);
-
-            document.getElementById("selectedText").textContent = 
-                '"' + selected + '" (From index ' + start + ' to ' + end + ')';
+            document.getElementById("selectedText").textContent = '"' + selected + '" (Index ' + start + ' to ' + end + ')';
         });
 
-        // Transform to Uppercase Button
         document.getElementById("btnUppercase").addEventListener("click", function() {
             textAnalyzer.value = textAnalyzer.value.toUpperCase();
-            // Trigger input event to update counts
             textAnalyzer.dispatchEvent(new Event("input"));
         });
 
-        // Transform to Lowercase Button
         document.getElementById("btnLowercase").addEventListener("click", function() {
             textAnalyzer.value = textAnalyzer.value.toLowerCase();
             textAnalyzer.dispatchEvent(new Event("input"));
         });
 
-        // Check Index Button (Check if character index exists)
-        document.getElementById("btnCheckIndex").addEventListener("click", function() {
-            var idx = parseInt(document.getElementById("indexInput").value);
-            var text = textAnalyzer.value;
-
-            if (isNaN(idx)) {
-                document.getElementById("indexResult").textContent = "Please enter a valid number!";
-            } else if (idx >= 0 && idx < text.length) {
-                var charAtIndex = text.charAt(idx);
-                // Handle special characters display
-                if (charAtIndex === " ") charAtIndex = "[Space]";
-                if (charAtIndex === "\n") charAtIndex = "[New Line]";
-
-                document.getElementById("indexResult").textContent = 
-                    "Index " + idx + " EXISTS! Character is: '" + charAtIndex + "'";
-            } else {
-                document.getElementById("indexResult").textContent = 
-                    "Index " + idx + " DOES NOT EXIST! (Text length is " + text.length + ")";
-            }
-        });
-
-        // 3. Click Event
+        // 4. Click Event
         document.getElementById("btnClick").addEventListener("click", function() {
             document.getElementById("clickResult").textContent = "Button was clicked!";
             document.getElementById("clickResult").style.color = "blue";
         });
 
-        // 4. Double Click Event
+        // 5. Double Click Event
         document.getElementById("btnDblClick").addEventListener("dblclick", function() {
             document.getElementById("dblClickResult").textContent = "Button was double clicked!";
             document.getElementById("dblClickResult").style.color = "green";
         });
 
-        // 5. Mouseover and Mouseout Events
+        // 6. Mouseover and Mouseout Events
         document.getElementById("btnHover").addEventListener("mouseover", function() {
             document.getElementById("hoverResult").textContent = "Mouse is over the button!";
         });
@@ -245,18 +264,13 @@
             document.getElementById("hoverResult").textContent = "Mouse left the button!";
         });
 
-        // 6. Mousedown and Mouseup Events
+        // 7. Mousedown and Mouseup Events
         document.getElementById("btnPress").addEventListener("mousedown", function() {
             document.getElementById("pressResult").textContent = "Mouse button pressed down!";
         });
 
         document.getElementById("btnPress").addEventListener("mouseup", function() {
             document.getElementById("pressResult").textContent = "Mouse button released!";
-        });
-
-        // 7. Mousemove Event
-        document.getElementById("moveBox").addEventListener("mousemove", function(event) {
-            document.getElementById("moveResult").textContent = "X: " + event.clientX + ", Y: " + event.clientY;
         });
 
         // 8. Keydown and Keyup Events
@@ -289,7 +303,7 @@
 
         // 12. Form Submit and Reset Events
         document.getElementById("myForm").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevents page reload
+            event.preventDefault();
             var name = document.getElementById("userName").value;
             document.getElementById("formResult").textContent = "Form submitted for: " + name;
         });
