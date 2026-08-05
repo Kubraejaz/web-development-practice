@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Events Practice Workspace</title>
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; max-width: 800px; margin: auto; background-color: #fafafa; color: #333;">
+
+    <h1 style="color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 10px;">⚡ JS Events Practice Workspace</h1>
+    <p><em>This file (<code>events-practice.html</code>) is ignored by Git and will NOT be pushed to GitHub. Use it to practice your code freely!</em></p>
+
+    <!-- EXERCISE 1: Click & Counter -->
+    <div style="background: white; border: 1px solid #ddd; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+        <h3>Exercise 1: Click Counter & Theme Color Switcher</h3>
+        <button id="btnCount" style="padding: 8px 16px; font-size: 15px; cursor: pointer;">Click Count: 0</button>
+        <button id="btnToggleColor" style="padding: 8px 16px; font-size: 15px; cursor: pointer; margin-left: 10px;">Toggle Theme Color</button>
+        <p id="counterStatus" style="font-weight: bold; margin-top: 10px;">Click the buttons above to test!</p>
+    </div>
+
+    <!-- EXERCISE 2: Live Text & Character/Word Analysis -->
+    <div style="background: white; border: 1px solid #ddd; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+        <h3>Exercise 2: Live Input Text & Word Analyzer</h3>
+        <textarea id="practiceArea" rows="4" cols="60" placeholder="Type any text or paragraph here..." style="width: 100%; padding: 10px; font-size: 14px; box-sizing: border-box;"></textarea>
+
+        <div style="margin-top: 10px; display: flex; gap: 10px;">
+            <button id="btnMakeUpper" style="padding: 6px 12px; cursor: pointer;">Convert to UPPERCASE</button>
+            <button id="btnMakeLower" style="padding: 6px 12px; cursor: pointer;">Convert to lowercase</button>
+            <button id="btnClear" style="padding: 6px 12px; cursor: pointer; background: #fee2e2; border: 1px solid #f87171;">Clear Text</button>
+        </div>
+
+        <div style="background: #f1f5f9; padding: 10px; margin-top: 10px; border-radius: 4px;">
+            <p style="margin: 4px 0;"><strong>Character Count:</strong> <span id="outCharCount">0</span></p>
+            <p style="margin: 4px 0;"><strong>Word Count:</strong> <span id="outWordCount">0</span></p>
+            <p style="margin: 4px 0;"><strong>Space Count:</strong> <span id="outSpaceCount">0</span></p>
+            <p style="margin: 4px 0;"><strong>Selected Text:</strong> <span id="outSelectedText">None</span></p>
+        </div>
+    </div>
+
+    <!-- EXERCISE 3: Keyboard Inspector -->
+    <div style="background: white; border: 1px solid #ddd; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+        <h3>Exercise 3: Keydown & Keycode Detector</h3>
+        <input type="text" id="keyInput" placeholder="Click here and press any keyboard key..." style="width: 100%; padding: 10px; font-size: 14px; box-sizing: border-box;">
+        <p id="keyDetails" style="font-family: monospace; font-size: 15px; color: #d97706; margin-top: 10px;">
+            Key Name: - | Key Code: - | Shift Pressed: false
+        </p>
+    </div>
+
+    <!-- EXERCISE 4: Mouseover & Hover State -->
+    <div style="background: white; border: 1px solid #ddd; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+        <h3>Exercise 4: Mouse Hover & Cursor Boundaries</h3>
+        <div id="hoverCard" style="border: 2px dashed #94a3b8; padding: 25px; text-align: center; border-radius: 8px; cursor: pointer; transition: all 0.3s;">
+            <h4 id="hoverText" style="margin: 0;">Hover your cursor over this card</h4>
+        </div>
+    </div>
+
+    <!-- EXERCISE 5: Mouse Movement Coordinates -->
+    <div style="background: white; border: 1px solid #ddd; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+        <h3>Exercise 5: Mouse Move Coordinates (X, Y)</h3>
+        <div id="coordsBox" style="height: 100px; background: #e2e8f0; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #475569;">
+            Move mouse here to track X & Y position
+        </div>
+    </div>
+
+
+    <!-- JavaScript Practice Script -->
+    <script>
+        // ==========================================
+        // EXERCISE 1: Click & Theme Color Switcher
+        // ==========================================
+        var count = 0;
+        var btnCount = document.getElementById("btnCount");
+        var counterStatus = document.getElementById("counterStatus");
+
+        btnCount.addEventListener("click", function() {
+            count++;
+            this.textContent = "Click Count: " + count;
+            counterStatus.textContent = "You clicked the button " + count + " times!";
+        });
+
+        var btnToggleColor = document.getElementById("btnToggleColor");
+        var isDark = false;
+        btnToggleColor.addEventListener("click", function() {
+            isDark = !isDark;
+            if (isDark) {
+                document.body.style.backgroundColor = "#1e293b";
+                document.body.style.color = "#f8fafc";
+            } else {
+                document.body.style.backgroundColor = "#fafafa";
+                document.body.style.color = "#333333";
+            }
+        });
+
+        // ==========================================
+        // EXERCISE 2: Live Input Text & Word Analyzer
+        // ==========================================
+        var practiceArea = document.getElementById("practiceArea");
+
+        practiceArea.addEventListener("input", function() {
+            var val = this.value;
+
+            // Character count
+            document.getElementById("outCharCount").textContent = val.length;
+
+            // Word count
+            var words = val.trim() === "" ? 0 : val.trim().split(/\s+/).length;
+            document.getElementById("outWordCount").textContent = words;
+
+            // Space count
+            var spaces = (val.match(/ /g) || []).length;
+            document.getElementById("outSpaceCount").textContent = spaces;
+        });
+
+        // Text selection detector
+        practiceArea.addEventListener("select", function() {
+            var start = this.selectionStart;
+            var end = this.selectionEnd;
+            var selected = this.value.substring(start, end);
+            document.getElementById("outSelectedText").textContent = 
+                '"' + selected + '" (From index ' + start + ' to ' + end + ')';
+        });
+
+        document.getElementById("btnMakeUpper").addEventListener("click", function() {
+            practiceArea.value = practiceArea.value.toUpperCase();
+            practiceArea.dispatchEvent(new Event("input"));
+        });
+
+        document.getElementById("btnMakeLower").addEventListener("click", function() {
+            practiceArea.value = practiceArea.value.toLowerCase();
+            practiceArea.dispatchEvent(new Event("input"));
+        });
+
+        document.getElementById("btnClear").addEventListener("click", function() {
+            practiceArea.value = "";
+            practiceArea.dispatchEvent(new Event("input"));
+            document.getElementById("outSelectedText").textContent = "None";
+        });
+
+        // ==========================================
+        // EXERCISE 3: Keydown Detector
+        // ==========================================
+        var keyInput = document.getElementById("keyInput");
+        keyInput.addEventListener("keydown", function(e) {
+            document.getElementById("keyDetails").textContent = 
+                "Key Name: '" + e.key + "' | Key Code: " + e.code + " | Shift Pressed: " + e.shiftKey;
+        });
+
+        // ==========================================
+        // EXERCISE 4: Mouse Hover Card
+        // ==========================================
+        var hoverCard = document.getElementById("hoverCard");
+        var hoverText = document.getElementById("hoverText");
+
+        hoverCard.addEventListener("mouseenter", function() {
+            this.style.borderColor = "#2563eb";
+            this.style.backgroundColor = "#eff6ff";
+            hoverText.textContent = "Mouse Cursor Entered! 🚪";
+            hoverText.style.color = "#2563eb";
+        });
+
+        hoverCard.addEventListener("mouseleave", function() {
+            this.style.borderColor = "#94a3b8";
+            this.style.backgroundColor = "transparent";
+            hoverText.textContent = "Hover your cursor over this card";
+            hoverText.style.color = "inherit";
+        });
+
+        // ==========================================
+        // EXERCISE 5: Mouse Coordinates Tracker
+        // ==========================================
+        var coordsBox = document.getElementById("coordsBox");
+        coordsBox.addEventListener("mousemove", function(e) {
+            var rect = this.getBoundingClientRect();
+            var x = Math.round(e.clientX - rect.left);
+            var y = Math.round(e.clientY - rect.top);
+            this.textContent = "Local Mouse Position -> X: " + x + "px | Y: " + y + "px";
+        });
+    </script>
+
+</body>
+</html>
